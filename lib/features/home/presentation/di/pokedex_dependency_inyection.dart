@@ -3,6 +3,7 @@ import 'package:pokedex_global/features/home/data/datasource/pokedex_datasource.
 import 'package:pokedex_global/features/home/data/repository/pokedex_impl.dart';
 import 'package:pokedex_global/features/home/domain/repository/pokedex_repository.dart';
 import 'package:pokedex_global/features/home/domain/usecases/usecases.dart';
+import 'package:pokedex_global/features/pokemon_details/presentation/di/pokemon_details_dependency_injection.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'pokedex_dependency_inyection.g.dart';
@@ -13,6 +14,7 @@ part 'pokedex_dependency_inyection.g.dart';
 @riverpod
 PokedexRepository pokedexRepository(Ref ref) => PokedexImpl(
       datasource: ref.watch(pokedexDatasourceProvider),
+      getPokemonDetailUseCase: ref.watch(getPokemonDetailUseCaseProvider),
     );
 
 /// {@template pokedex_datasource_provider}

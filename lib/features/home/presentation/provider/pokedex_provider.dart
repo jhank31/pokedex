@@ -5,13 +5,42 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'pokedex_provider.g.dart';
 
-/// {@template pokedex_list_provider}
+/// {@template pokedex_list}
 /// Provider for the pokedex list.
 /// {@endtemplate}
 @riverpod
-Future<List<PokemonSummaryEntity>> pokedexList(Ref ref) async {
-  final getPokemonsListUseCase = ref.watch(getPokemonsListUseCaseProvider);
-  final pokedexList = await getPokemonsListUseCase
-      .call(GetPokemonsListParams(limit: 100, offset: 0));
-  return pokedexList.results;
+class PokedexList extends _$PokedexList {
+  static const int _limit = 20;
+  int _offset = 0;
+  bool _isLoadingMore = false;
+
+  @override
+  FutureOr<List<PokemonDetailEntity>> build() async {
+    return _fetchPokemons();
+  }
+
+  Future<List<PokemonDetailEntity>> _fetchPokemons() async {
+    final getPokemonsListUseCase = ref.watch(getPokemonsListUseCaseProvider);
+    final pokedexList = await getPokemonsListUseCase(
+      GetPokemonsListParams(limit: _limit, offset: _offset),
+    );
+    return pokedexList;
+  }
+
+  Future<void> loadMore() async {
+    if (_isLoadingMore) return;
+    _isLoadingMore = true;
+    _offset += _limit;
+
+    final morePokemons = await _fetchPokemons();
+    state = AsyncData([...?state.value, ...morePokemons]);
+    _isLoadingMore = false;
+  }
+
+  Future<void> refreshList() async {
+    _offset = 0;
+    state = const AsyncLoading();
+    final pokedexList = await _fetchPokemons();
+    state = AsyncData(pokedexList);
+  }
 }

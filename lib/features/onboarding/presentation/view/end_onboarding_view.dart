@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokedex_global/core/const/gap.dart';
 import 'package:pokedex_global/core/theming/core/provider/theming_provider.dart';
-import 'package:pokedex_global/gen/assets.gen.dart/assets.gen.dart';
+import 'package:pokedex_global/gen/assets/assets.gen.dart';
 import 'package:pokedex_global/l10n/l10n.dart';
 
 /// {@template end_onboarding_view}

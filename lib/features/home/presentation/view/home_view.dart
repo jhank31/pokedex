@@ -1,51 +1,90 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:pokedex_global/core/const/sizes.dart';
 import 'package:pokedex_global/core/router/app_router.gr.dart';
 import 'package:pokedex_global/features/home/presentation/provider/pokedex_provider.dart';
+import 'package:pokedex_global/features/home/presentation/widgets/widgets.dart';
 
 /// {@template home_view}
-/// A view that displays the home.
+/// A view that displays the home view.
 /// {@endtemplate}
-class HomeView extends ConsumerWidget {
-  /// {@macro home_view}
+class HomeView extends ConsumerStatefulWidget {
   const HomeView({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends ConsumerState<HomeView> {
+  /// The scroll controller for the list.
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_onScroll);
+  }
+
+  void _onScroll() {
+    final currentScroll = _scrollController.position.pixels;
+    final maxScroll = _scrollController.position.maxScrollExtent;
+    if (currentScroll >= maxScroll * 0.8) {
+      ref.read(pokedexListProvider.notifier).loadMore();
+    }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final pokedexList = ref.watch(pokedexListProvider);
+
     return pokedexList.when(
       data: (data) => Scaffold(
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        body: Padding(
+          padding: const EdgeInsets.only(
+              left: Sizes.p10, right: Sizes.p10, top: Sizes.p24),
+          child: RefreshIndicator(
+            onRefresh: () =>
+                ref.read(pokedexListProvider.notifier).refreshList(),
             child: ListView.separated(
-              itemCount: data.length,
-              separatorBuilder: (context, index) => const SizedBox(height: 10),
-              itemBuilder: (context, index) => Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(10),
+              controller: _scrollController,
+              padding: const EdgeInsets.all(Sizes.p16),
+              itemCount: data.length + 1,
+              separatorBuilder: (_, __) => const SizedBox(height: Sizes.p10),
+              itemBuilder: (context, index) {
+                if (index == data.length) {
+                  // Loader al final
+                  return const Center(
+                    child: Padding(
+                      padding: EdgeInsets.all(Sizes.p16),
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                }
+
+                final pokemon = data[index];
+                return GestureDetector(
+                  onTap: () => context.pushRoute(
+                    PokemonDetailsRoute(pokemon: pokemon),
                   ),
-                  child: GestureDetector(
-                    onTap: () => context
-                        .pushRoute(PokemonDetailsRoute(name: data[index].name)),
-                    child: Text(data[index].name),
-                  )),
+                  child: PokemonCard(pokemon: pokemon),
+                );
+              },
             ),
           ),
         ),
       ),
-      error: (error, stackTrace) => const Scaffold(
-        body: Center(
-          child: Text('Error'),
-        ),
+      error: (_, __) => const Scaffold(
+        body: Center(child: Text('Error loading Pokémon ⚠️')),
       ),
       loading: () => const Scaffold(
-        body: Center(
-          child: Text('Loading'),
-        ),
+        body: Center(child: CircularProgressIndicator()),
       ),
     );
   }

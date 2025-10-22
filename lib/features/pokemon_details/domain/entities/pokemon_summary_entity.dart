@@ -28,20 +28,18 @@ class PokemonSummaryEntity {
   }
 
   /// Converts this entity to a model.
-  PokemonSummary toModel() {
-    return PokemonSummary(
+  PokemonListItems toModel() {
+    return PokemonListItems(
       name: name,
       url: url,
     );
   }
 
   /// Creates an entity from a model.
-  factory PokemonSummaryEntity.fromModel(PokemonSummary model) {
+  factory PokemonSummaryEntity.fromModel(PokemonListItems model) {
     return PokemonSummaryEntity(
       name: model.name,
       url: model.url,
     );
   }
-
- 
 }

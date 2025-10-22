@@ -15,7 +15,7 @@ final class ColorPaletteLight extends BaseColorPalette {
   Color get primary300 => Color(0xFF1E88E5);
 
   @override
-  Color get primary400 => Color(0xFF0D47A1);
+  Color get primary400 => Color(0xFF1565C0);
 
   @override
   Color get primary500 => Color(0xFF173EA5);

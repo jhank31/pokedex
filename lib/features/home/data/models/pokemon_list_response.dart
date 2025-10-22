@@ -10,12 +10,15 @@ abstract class PokemonListResponse with _$PokemonListResponse {
   const factory PokemonListResponse({
     /// The count of the pokemon list.
     required int count,
+
     /// The next page of the pokemon list.
     String? next,
+
     /// The previous page of the pokemon list.
     String? previous,
+
     /// The results of the pokemon list.
-    required List<PokemonSummary> results,
+    required List<PokemonListItems> results,
   }) = _PokemonListResponse;
 
   factory PokemonListResponse.fromJson(Map<String, dynamic> json) =>

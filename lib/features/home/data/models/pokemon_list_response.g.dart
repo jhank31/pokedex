@@ -12,7 +12,7 @@ _PokemonListResponse _$PokemonListResponseFromJson(Map<String, dynamic> json) =>
       next: json['next'] as String?,
       previous: json['previous'] as String?,
       results: (json['results'] as List<dynamic>)
-          .map((e) => PokemonSummary.fromJson(e as Map<String, dynamic>))
+          .map((e) => PokemonListItems.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

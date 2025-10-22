@@ -39,13 +39,11 @@ class AppTypography {
   TextStyle get smMedium => const TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.w500,
-        letterSpacing: 0.15,
       );
 
-  TextStyle get smiBold => const TextStyle(
+  TextStyle get smSemiBold => const TextStyle(
         fontSize: 12,
-        fontWeight: FontWeight.w700,
-        letterSpacing: 0.15,
+        fontWeight: FontWeight.w600,
       );
 
   //* md = medium
@@ -110,19 +108,24 @@ class AppTypography {
 
   //* xxl = extra extra large
   TextStyle get xxlRegular => const TextStyle(
-        fontSize: 20,
+        fontSize: 21,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.15,
       );
 
   TextStyle get xxlMedium => const TextStyle(
-        fontSize: 20,
+        fontSize: 21,
         fontWeight: FontWeight.w500,
         letterSpacing: 0.15,
       );
 
+  TextStyle get xxlSemiBold => const TextStyle(
+        fontSize: 21,
+        fontWeight: FontWeight.w600,
+      );
+
   TextStyle get xxlBold => const TextStyle(
-        fontSize: 20,
+        fontSize: 21,
         fontWeight: FontWeight.w700,
         letterSpacing: 0.15,
       );

@@ -148,6 +148,21 @@ abstract class BaseTheme {
             fontWeight: FontWeight.bold,
           ),
         ),
+        navigationBarTheme: NavigationBarThemeData(
+          labelTextStyle: WidgetStateProperty.resolveWith<TextStyle>(
+            (states) {
+              if (states.contains(WidgetState.selected)) {
+                return TextStyle(
+                  color: baseColorPalette.primary400,
+                  fontWeight: FontWeight.bold,
+                );
+              }
+              return TextStyle(
+                color: baseColorPalette.gray500,
+              );
+            },
+          ),
+        ),
         useMaterial3: true,
         fontFamily: typography.primaryFontFamily,
         brightness: brightness,

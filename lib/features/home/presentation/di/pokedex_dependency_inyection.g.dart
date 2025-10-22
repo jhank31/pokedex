@@ -60,7 +60,7 @@ final class PokedexRepositoryProvider extends $FunctionalProvider<
   }
 }
 
-String _$pokedexRepositoryHash() => r'5a76ce990dd77d0240ba96ad3afd2193889e6b13';
+String _$pokedexRepositoryHash() => r'e5cdf66607d83717b49710f9003d38e145e1a211';
 
 /// {@template pokedex_datasource_provider}
 /// Provider for the pokedex datasource.

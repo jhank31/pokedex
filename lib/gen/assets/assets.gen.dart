@@ -21,12 +21,98 @@ class $AssetsFontsGen {
   String get path => 'assets/fonts';
 }
 
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
+
+  /// File path: assets/icons/bug.svg
+  String get bug => 'assets/icons/bug.svg';
+
+  /// File path: assets/icons/dragon.svg
+  String get dragon => 'assets/icons/dragon.svg';
+
+  /// File path: assets/icons/electric.svg
+  String get electric => 'assets/icons/electric.svg';
+
+  /// File path: assets/icons/fairy.svg
+  String get fairy => 'assets/icons/fairy.svg';
+
+  /// File path: assets/icons/fight.svg
+  String get fight => 'assets/icons/fight.svg';
+
+  /// File path: assets/icons/fire.svg
+  String get fire => 'assets/icons/fire.svg';
+
+  /// File path: assets/icons/flying.svg
+  String get flying => 'assets/icons/flying.svg';
+
+  /// File path: assets/icons/ghost.svg
+  String get ghost => 'assets/icons/ghost.svg';
+
+  /// File path: assets/icons/grass.svg
+  String get grass => 'assets/icons/grass.svg';
+
+  /// File path: assets/icons/ground.svg
+  String get ground => 'assets/icons/ground.svg';
+
+  /// File path: assets/icons/ice.svg
+  String get ice => 'assets/icons/ice.svg';
+
+  /// File path: assets/icons/normal.svg
+  String get normal => 'assets/icons/normal.svg';
+
+  /// File path: assets/icons/poison.svg
+  String get poison => 'assets/icons/poison.svg';
+
+  /// File path: assets/icons/psychic.svg
+  String get psychic => 'assets/icons/psychic.svg';
+
+  /// File path: assets/icons/rock.svg
+  String get rock => 'assets/icons/rock.svg';
+
+  /// File path: assets/icons/sinister.svg
+  String get sinister => 'assets/icons/sinister.svg';
+
+  /// File path: assets/icons/steel.svg
+  String get steel => 'assets/icons/steel.svg';
+
+  /// File path: assets/icons/water.svg
+  String get water => 'assets/icons/water.svg';
+
+  /// Directory path: assets/icons
+  String get path => 'assets/icons';
+
+  /// List of all assets
+  List<String> get values => [
+        bug,
+        dragon,
+        electric,
+        fairy,
+        fight,
+        fire,
+        flying,
+        ghost,
+        grass,
+        ground,
+        ice,
+        normal,
+        poison,
+        psychic,
+        rock,
+        sinister,
+        steel,
+        water
+      ];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
   /// File path: assets/images/end_onboarding.png
   AssetGenImage get endOnboarding =>
       const AssetGenImage('assets/images/end_onboarding.png');
+
+  /// File path: assets/images/logo.png
+  AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
   /// File path: assets/images/start_onboarding.png
   AssetGenImage get startOnboarding =>
@@ -36,7 +122,7 @@ class $AssetsImagesGen {
   String get path => 'assets/images';
 
   /// List of all assets
-  List<AssetGenImage> get values => [endOnboarding, startOnboarding];
+  List<AssetGenImage> get values => [endOnboarding, logo, startOnboarding];
 }
 
 class $AssetsFontsPoppinsGen {
@@ -66,6 +152,7 @@ class Assets {
   const Assets._();
 
   static const $AssetsFontsGen fonts = $AssetsFontsGen();
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'pokemon_summary.dart';
+part of 'pokemon_list_items.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,29 +13,29 @@ part of 'pokemon_summary.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$PokemonSummary {
+mixin _$PokemonListItems {
   /// The name of the pokemon.
   String get name;
 
   /// The url of the pokemon.
   String get url;
 
-  /// Create a copy of PokemonSummary
+  /// Create a copy of PokemonListItems
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $PokemonSummaryCopyWith<PokemonSummary> get copyWith =>
-      _$PokemonSummaryCopyWithImpl<PokemonSummary>(
-          this as PokemonSummary, _$identity);
+  $PokemonListItemsCopyWith<PokemonListItems> get copyWith =>
+      _$PokemonListItemsCopyWithImpl<PokemonListItems>(
+          this as PokemonListItems, _$identity);
 
-  /// Serializes this PokemonSummary to a JSON map.
+  /// Serializes this PokemonListItems to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PokemonSummary &&
+            other is PokemonListItems &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.url, url) || other.url == url));
   }
@@ -46,28 +46,28 @@ mixin _$PokemonSummary {
 
   @override
   String toString() {
-    return 'PokemonSummary(name: $name, url: $url)';
+    return 'PokemonListItems(name: $name, url: $url)';
   }
 }
 
 /// @nodoc
-abstract mixin class $PokemonSummaryCopyWith<$Res> {
-  factory $PokemonSummaryCopyWith(
-          PokemonSummary value, $Res Function(PokemonSummary) _then) =
-      _$PokemonSummaryCopyWithImpl;
+abstract mixin class $PokemonListItemsCopyWith<$Res> {
+  factory $PokemonListItemsCopyWith(
+          PokemonListItems value, $Res Function(PokemonListItems) _then) =
+      _$PokemonListItemsCopyWithImpl;
   @useResult
   $Res call({String name, String url});
 }
 
 /// @nodoc
-class _$PokemonSummaryCopyWithImpl<$Res>
-    implements $PokemonSummaryCopyWith<$Res> {
-  _$PokemonSummaryCopyWithImpl(this._self, this._then);
+class _$PokemonListItemsCopyWithImpl<$Res>
+    implements $PokemonListItemsCopyWith<$Res> {
+  _$PokemonListItemsCopyWithImpl(this._self, this._then);
 
-  final PokemonSummary _self;
-  final $Res Function(PokemonSummary) _then;
+  final PokemonListItems _self;
+  final $Res Function(PokemonListItems) _then;
 
-  /// Create a copy of PokemonSummary
+  /// Create a copy of PokemonListItems
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -88,8 +88,8 @@ class _$PokemonSummaryCopyWithImpl<$Res>
   }
 }
 
-/// Adds pattern-matching-related methods to [PokemonSummary].
-extension PokemonSummaryPatterns on PokemonSummary {
+/// Adds pattern-matching-related methods to [PokemonListItems].
+extension PokemonListItemsPatterns on PokemonListItems {
   /// A variant of `map` that fallback to returning `orElse`.
   ///
   /// It is equivalent to doing:
@@ -104,12 +104,12 @@ extension PokemonSummaryPatterns on PokemonSummary {
 
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PokemonSummary value)? $default, {
+    TResult Function(_PokemonListItems value)? $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
-      case _PokemonSummary() when $default != null:
+      case _PokemonListItems() when $default != null:
         return $default(_that);
       case _:
         return orElse();
@@ -131,11 +131,11 @@ extension PokemonSummaryPatterns on PokemonSummary {
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_PokemonSummary value) $default,
+    TResult Function(_PokemonListItems value) $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _PokemonSummary():
+      case _PokemonListItems():
         return $default(_that);
       case _:
         throw StateError('Unexpected subclass');
@@ -156,11 +156,11 @@ extension PokemonSummaryPatterns on PokemonSummary {
 
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PokemonSummary value)? $default,
+    TResult? Function(_PokemonListItems value)? $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _PokemonSummary() when $default != null:
+      case _PokemonListItems() when $default != null:
         return $default(_that);
       case _:
         return null;
@@ -186,7 +186,7 @@ extension PokemonSummaryPatterns on PokemonSummary {
   }) {
     final _that = this;
     switch (_that) {
-      case _PokemonSummary() when $default != null:
+      case _PokemonListItems() when $default != null:
         return $default(_that.name, _that.url);
       case _:
         return orElse();
@@ -212,7 +212,7 @@ extension PokemonSummaryPatterns on PokemonSummary {
   ) {
     final _that = this;
     switch (_that) {
-      case _PokemonSummary():
+      case _PokemonListItems():
         return $default(_that.name, _that.url);
       case _:
         throw StateError('Unexpected subclass');
@@ -237,7 +237,7 @@ extension PokemonSummaryPatterns on PokemonSummary {
   ) {
     final _that = this;
     switch (_that) {
-      case _PokemonSummary() when $default != null:
+      case _PokemonListItems() when $default != null:
         return $default(_that.name, _that.url);
       case _:
         return null;
@@ -247,10 +247,10 @@ extension PokemonSummaryPatterns on PokemonSummary {
 
 /// @nodoc
 @JsonSerializable()
-class _PokemonSummary implements PokemonSummary {
-  const _PokemonSummary({required this.name, required this.url});
-  factory _PokemonSummary.fromJson(Map<String, dynamic> json) =>
-      _$PokemonSummaryFromJson(json);
+class _PokemonListItems implements PokemonListItems {
+  const _PokemonListItems({required this.name, required this.url});
+  factory _PokemonListItems.fromJson(Map<String, dynamic> json) =>
+      _$PokemonListItemsFromJson(json);
 
   /// The name of the pokemon.
   @override
@@ -260,17 +260,17 @@ class _PokemonSummary implements PokemonSummary {
   @override
   final String url;
 
-  /// Create a copy of PokemonSummary
+  /// Create a copy of PokemonListItems
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$PokemonSummaryCopyWith<_PokemonSummary> get copyWith =>
-      __$PokemonSummaryCopyWithImpl<_PokemonSummary>(this, _$identity);
+  _$PokemonListItemsCopyWith<_PokemonListItems> get copyWith =>
+      __$PokemonListItemsCopyWithImpl<_PokemonListItems>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$PokemonSummaryToJson(
+    return _$PokemonListItemsToJson(
       this,
     );
   }
@@ -279,7 +279,7 @@ class _PokemonSummary implements PokemonSummary {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PokemonSummary &&
+            other is _PokemonListItems &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.url, url) || other.url == url));
   }
@@ -290,30 +290,30 @@ class _PokemonSummary implements PokemonSummary {
 
   @override
   String toString() {
-    return 'PokemonSummary(name: $name, url: $url)';
+    return 'PokemonListItems(name: $name, url: $url)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$PokemonSummaryCopyWith<$Res>
-    implements $PokemonSummaryCopyWith<$Res> {
-  factory _$PokemonSummaryCopyWith(
-          _PokemonSummary value, $Res Function(_PokemonSummary) _then) =
-      __$PokemonSummaryCopyWithImpl;
+abstract mixin class _$PokemonListItemsCopyWith<$Res>
+    implements $PokemonListItemsCopyWith<$Res> {
+  factory _$PokemonListItemsCopyWith(
+          _PokemonListItems value, $Res Function(_PokemonListItems) _then) =
+      __$PokemonListItemsCopyWithImpl;
   @override
   @useResult
   $Res call({String name, String url});
 }
 
 /// @nodoc
-class __$PokemonSummaryCopyWithImpl<$Res>
-    implements _$PokemonSummaryCopyWith<$Res> {
-  __$PokemonSummaryCopyWithImpl(this._self, this._then);
+class __$PokemonListItemsCopyWithImpl<$Res>
+    implements _$PokemonListItemsCopyWith<$Res> {
+  __$PokemonListItemsCopyWithImpl(this._self, this._then);
 
-  final _PokemonSummary _self;
-  final $Res Function(_PokemonSummary) _then;
+  final _PokemonListItems _self;
+  final $Res Function(_PokemonListItems) _then;
 
-  /// Create a copy of PokemonSummary
+  /// Create a copy of PokemonListItems
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -321,7 +321,7 @@ class __$PokemonSummaryCopyWithImpl<$Res>
     Object? name = null,
     Object? url = null,
   }) {
-    return _then(_PokemonSummary(
+    return _then(_PokemonListItems(
       name: null == name
           ? _self.name
           : name // ignore: cast_nullable_to_non_nullable

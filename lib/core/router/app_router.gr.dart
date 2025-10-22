@@ -19,6 +19,8 @@ import 'package:pokedex_global/features/home/presentation/home_page.dart'
 import 'package:pokedex_global/features/host/host_page.dart' as _i3;
 import 'package:pokedex_global/features/onboarding/presentation/onboarding_page.dart'
     as _i4;
+import 'package:pokedex_global/features/pokemon_details/domain/entities/entities.dart'
+    as _i10;
 import 'package:pokedex_global/features/pokemon_details/presentation/pokemon_details_page.dart'
     as _i5;
 import 'package:pokedex_global/features/splash/presentation/splash_page.dart'
@@ -93,11 +95,11 @@ class OnboardingRoute extends _i8.PageRouteInfo<void> {
 class PokemonDetailsRoute extends _i8.PageRouteInfo<PokemonDetailsRouteArgs> {
   PokemonDetailsRoute({
     _i9.Key? key,
-    required String name,
+    required _i10.PokemonDetailEntity pokemon,
     List<_i8.PageRouteInfo>? children,
   }) : super(
           PokemonDetailsRoute.name,
-          args: PokemonDetailsRouteArgs(key: key, name: name),
+          args: PokemonDetailsRouteArgs(key: key, pokemon: pokemon),
           initialChildren: children,
         );
 
@@ -107,32 +109,32 @@ class PokemonDetailsRoute extends _i8.PageRouteInfo<PokemonDetailsRouteArgs> {
     name,
     builder: (data) {
       final args = data.argsAs<PokemonDetailsRouteArgs>();
-      return _i5.PokemonDetailsPage(key: args.key, name: args.name);
+      return _i5.PokemonDetailsPage(key: args.key, pokemon: args.pokemon);
     },
   );
 }
 
 class PokemonDetailsRouteArgs {
-  const PokemonDetailsRouteArgs({this.key, required this.name});
+  const PokemonDetailsRouteArgs({this.key, required this.pokemon});
 
   final _i9.Key? key;
 
-  final String name;
+  final _i10.PokemonDetailEntity pokemon;
 
   @override
   String toString() {
-    return 'PokemonDetailsRouteArgs{key: $key, name: $name}';
+    return 'PokemonDetailsRouteArgs{key: $key, pokemon: $pokemon}';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     if (other is! PokemonDetailsRouteArgs) return false;
-    return key == other.key && name == other.name;
+    return key == other.key && pokemon == other.pokemon;
   }
 
   @override
-  int get hashCode => key.hashCode ^ name.hashCode;
+  int get hashCode => key.hashCode ^ pokemon.hashCode;
 }
 
 /// generated route for

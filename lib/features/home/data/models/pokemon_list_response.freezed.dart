@@ -24,7 +24,7 @@ mixin _$PokemonListResponse {
   String? get previous;
 
   /// The results of the pokemon list.
-  List<PokemonSummary> get results;
+  List<PokemonListItems> get results;
 
   /// Create a copy of PokemonListResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -70,7 +70,7 @@ abstract mixin class $PokemonListResponseCopyWith<$Res> {
       {int count,
       String? next,
       String? previous,
-      List<PokemonSummary> results});
+      List<PokemonListItems> results});
 }
 
 /// @nodoc
@@ -107,7 +107,7 @@ class _$PokemonListResponseCopyWithImpl<$Res>
       results: null == results
           ? _self.results
           : results // ignore: cast_nullable_to_non_nullable
-              as List<PokemonSummary>,
+              as List<PokemonListItems>,
     ));
   }
 }
@@ -206,7 +206,7 @@ extension PokemonListResponsePatterns on PokemonListResponse {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(int count, String? next, String? previous,
-            List<PokemonSummary> results)?
+            List<PokemonListItems> results)?
         $default, {
     required TResult orElse(),
   }) {
@@ -235,7 +235,7 @@ extension PokemonListResponsePatterns on PokemonListResponse {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(int count, String? next, String? previous,
-            List<PokemonSummary> results)
+            List<PokemonListItems> results)
         $default,
   ) {
     final _that = this;
@@ -262,7 +262,7 @@ extension PokemonListResponsePatterns on PokemonListResponse {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(int count, String? next, String? previous,
-            List<PokemonSummary> results)?
+            List<PokemonListItems> results)?
         $default,
   ) {
     final _that = this;
@@ -282,7 +282,7 @@ class _PokemonListResponse implements PokemonListResponse {
       {required this.count,
       this.next,
       this.previous,
-      required final List<PokemonSummary> results})
+      required final List<PokemonListItems> results})
       : _results = results;
   factory _PokemonListResponse.fromJson(Map<String, dynamic> json) =>
       _$PokemonListResponseFromJson(json);
@@ -300,11 +300,11 @@ class _PokemonListResponse implements PokemonListResponse {
   final String? previous;
 
   /// The results of the pokemon list.
-  final List<PokemonSummary> _results;
+  final List<PokemonListItems> _results;
 
   /// The results of the pokemon list.
   @override
-  List<PokemonSummary> get results {
+  List<PokemonListItems> get results {
     if (_results is EqualUnmodifiableListView) return _results;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_results);
@@ -361,7 +361,7 @@ abstract mixin class _$PokemonListResponseCopyWith<$Res>
       {int count,
       String? next,
       String? previous,
-      List<PokemonSummary> results});
+      List<PokemonListItems> results});
 }
 
 /// @nodoc
@@ -398,7 +398,7 @@ class __$PokemonListResponseCopyWithImpl<$Res>
       results: null == results
           ? _self._results
           : results // ignore: cast_nullable_to_non_nullable
-              as List<PokemonSummary>,
+              as List<PokemonListItems>,
     ));
   }
 }

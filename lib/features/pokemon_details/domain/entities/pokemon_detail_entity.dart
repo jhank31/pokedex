@@ -1,3 +1,5 @@
+import 'package:pokedex_global/features/pokemon_details/domain/enums/enums.dart';
+
 import '../../data/models/pokemon_detail.dart';
 
 /// {@template pokemon_detail_entity}
@@ -34,7 +36,7 @@ class PokemonDetailEntity {
   final double weight;
 
   /// The types of the pokemon.
-  final List<String> types;
+  final List<PokemonTypeEnum> types;
 
   /// The abilities of the pokemon.
   final List<String> abilities;
@@ -43,7 +45,7 @@ class PokemonDetailEntity {
   final String imageUrl;
 
   /// The color of the pokemon.
-  final String color;
+  final PokemonColorEnum color;
 
   /// The genus of the pokemon.
   final String genus;
@@ -70,7 +72,7 @@ class PokemonDetailEntity {
         .firstWhere((g) => g['language']['name'] == 'es')['genus'];
     final flavor = (species['flavor_text_entries'] as List)
         .firstWhere((f) => f['language']['name'] == 'es')['flavor_text'];
-    final color = species['color']['name'];
+    final color = PokemonColorEnum.fromName(species['color']['name']);
     final genderRate = species['gender_rate'] as int;
     final femaleRate = genderRate >= 0 ? genderRate * 12.5 : 0.0;
     final maleRate = 100.0 - femaleRate;
@@ -80,7 +82,9 @@ class PokemonDetailEntity {
       name: detail.name,
       height: detail.height / 10,
       weight: detail.weight / 10,
-      types: detail.types.map((e) => e.type.name).toList(),
+      types: detail.types
+          .map((e) => PokemonTypeEnum.fromType(e.type.name))
+          .toList(),
       abilities: detail.abilities.map((e) => e.ability.name).toList(),
       imageUrl: detail.sprites.frontDefault ?? '',
       color: color,

@@ -8,25 +8,19 @@ part of 'pokedex_provider.dart';
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
-/// {@template pokedex_list_provider}
+/// {@template pokedex_list}
 /// Provider for the pokedex list.
 /// {@endtemplate}
 
-@ProviderFor(pokedexList)
+@ProviderFor(PokedexList)
 const pokedexListProvider = PokedexListProvider._();
 
-/// {@template pokedex_list_provider}
+/// {@template pokedex_list}
 /// Provider for the pokedex list.
 /// {@endtemplate}
-
-final class PokedexListProvider extends $FunctionalProvider<
-        AsyncValue<List<PokemonSummaryEntity>>,
-        List<PokemonSummaryEntity>,
-        FutureOr<List<PokemonSummaryEntity>>>
-    with
-        $FutureModifier<List<PokemonSummaryEntity>>,
-        $FutureProvider<List<PokemonSummaryEntity>> {
-  /// {@template pokedex_list_provider}
+final class PokedexListProvider
+    extends $AsyncNotifierProvider<PokedexList, List<PokemonDetailEntity>> {
+  /// {@template pokedex_list}
   /// Provider for the pokedex list.
   /// {@endtemplate}
   const PokedexListProvider._()
@@ -45,14 +39,29 @@ final class PokedexListProvider extends $FunctionalProvider<
 
   @$internal
   @override
-  $FutureProviderElement<List<PokemonSummaryEntity>> $createElement(
-          $ProviderPointer pointer) =>
-      $FutureProviderElement(pointer);
-
-  @override
-  FutureOr<List<PokemonSummaryEntity>> create(Ref ref) {
-    return pokedexList(ref);
-  }
+  PokedexList create() => PokedexList();
 }
 
-String _$pokedexListHash() => r'001f0c8efbd1303b16e2418d55cd0b8da46d6306';
+String _$pokedexListHash() => r'11ae152cd8b737371c925f3fb888d575b56079d1';
+
+/// {@template pokedex_list}
+/// Provider for the pokedex list.
+/// {@endtemplate}
+
+abstract class _$PokedexList extends $AsyncNotifier<List<PokemonDetailEntity>> {
+  FutureOr<List<PokemonDetailEntity>> build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<AsyncValue<List<PokemonDetailEntity>>,
+        List<PokemonDetailEntity>>;
+    final element = ref.element as $ClassProviderElement<
+        AnyNotifier<AsyncValue<List<PokemonDetailEntity>>,
+            List<PokemonDetailEntity>>,
+        AsyncValue<List<PokemonDetailEntity>>,
+        Object?,
+        Object?>;
+    element.handleValue(ref, created);
+  }
+}
