@@ -1,0 +1,9 @@
+export 'pokemon_detail_entity.dart';
+export 'pokemon_ability_entity.dart';
+export 'pokemon_ability_slot_entity.dart';
+export 'pokemon_official_artwork_entity.dart';
+export 'pokemon_sprites_entity.dart';
+export 'pokemon_sprites_other_entity.dart';
+export 'pokemon_summary_entity.dart';
+export 'pokemon_type_entity.dart';
+export 'pokemon_type_slot_entity.dart';

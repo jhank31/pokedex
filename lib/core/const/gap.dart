@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hive_crypto_wallet_app/core/const/sizes.dart';
+import 'package:pokedex_global/core/const/sizes.dart';
 
 /// {@template gap}
 /// Gap is a class that contains the values for spacing that are needed in the app

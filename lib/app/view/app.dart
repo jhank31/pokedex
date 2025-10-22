@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hive_crypto_wallet_app/core/app_life_cycle_listener/listener/app_life_cycle_listener.dart';
-import 'package:hive_crypto_wallet_app/core/router/app_router.dart';
-import 'package:hive_crypto_wallet_app/core/theming/core/provider/theming_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:pokedex_global/core/app_life_cycle_listener/listener/app_life_cycle_listener.dart';
+import 'package:pokedex_global/core/router/app_router.dart';
+import 'package:pokedex_global/core/theming/core/provider/theming_provider.dart';
+import 'package:pokedex_global/l10n/arb/app_localizations.dart';
 
 /// {@template app}
 /// The main widget for the application.
@@ -36,8 +37,11 @@ class _RouterWidget extends ConsumerWidget {
     final theme = ref.watch(themingProvider);
     return AppLifeCycleListener(
       child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
         routerConfig: appRouter.config(),
         theme: theme.baseTheme.theme,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
       ),
     );
   }

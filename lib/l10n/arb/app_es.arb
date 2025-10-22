@@ -1,5 +1,11 @@
 {
   "@@locale": "es",
   "hello": "Hola",
-  "greetUser": "Bienvenido, {username}!"
+  "greetUser": "Bienvenido, {username}!",
+  "startOnboardingTitle": "Todos los Pokémon en un solo lugar",
+  "startOnboardingDescription": "Accede a una amplia lista de Pokémon de todas las generaciones creadas por Nintendo",
+  "endOnboardingTitle": "Mantén tu Pokédex actualizada",
+  "endOnboardingDescription": "Regístrate y guarda tu perfil, Pokémon favoritos, configuraciones y mucho más en la aplicación",
+  "continueButton": "Continuar",
+  "finishButton": "Finalizar"
 }

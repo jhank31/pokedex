@@ -1,5 +1,5 @@
-import 'package:hive_crypto_wallet_app/app/app.dart';
-import 'package:hive_crypto_wallet_app/bootstrap.dart';
+import 'package:pokedex_global/app/view/app.dart';
+import 'package:pokedex_global/bootstrap.dart';
 
 void main() {
   bootstrap(

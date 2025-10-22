@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:hive_crypto_wallet_app/core/theming/core/base_color_palette.dart';
+import 'package:pokedex_global/core/theming/core/base_color_palette.dart';
 
 /// {@template color_palette_light}
 /// Color palette for the light theme
 /// {@endtemplate}
 final class ColorPaletteLight extends BaseColorPalette {
-  
   @override
-  Color get primary100 => Colors.teal.shade100;
+  Color get primary100 => Color(0xFF4565B7);
 
   @override
-  Color get primary200 => Colors.teal.shade200;
+  Color get primary200 => Color(0xFF4285F4);
 
   @override
-  Color get primary300 => Colors.teal.shade300;
+  Color get primary300 => Color(0xFF1E88E5);
 
   @override
-  Color get primary400 => Colors.teal.shade400;
+  Color get primary400 => Color(0xFF0D47A1);
 
   @override
-  Color get primary500 => Colors.teal.shade500;
+  Color get primary500 => Color(0xFF173EA5);
 
   @override
   Color get secondary100 => Colors.orange.shade100;
@@ -37,13 +36,13 @@ final class ColorPaletteLight extends BaseColorPalette {
   Color get secondary500 => Colors.orange.shade500;
 
   @override
-  Color get primaryColor => primary500;
-  
+  Color get primaryColor => primary300;
+
   @override
-  Color get secondaryColor => secondary500;
-  
+  Color get secondaryColor => secondary300;
+
   @override
   ColorScheme get colorScheme => ColorScheme.fromSeed(
-        seedColor: primary500,
+        seedColor: primary300,
       );
 }

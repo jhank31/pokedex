@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:hive_crypto_wallet_app/core/logging/logs/app_talker.dart';
+import 'package:pokedex_global/core/logging/logs/app_talker.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
 /// {@template talker_view}

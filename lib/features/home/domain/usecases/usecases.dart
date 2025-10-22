@@ -1,0 +1,1 @@
+export 'get_pokemons_list_usecase.dart';

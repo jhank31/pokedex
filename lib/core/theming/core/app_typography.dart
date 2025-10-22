@@ -8,7 +8,7 @@ class AppTypography {
   const AppTypography();
 
   /// The primary font family
-  String get primaryFontFamily => 'Roboto';
+  String get primaryFontFamily => 'Poppins';
 
   //* xs = extra small
   TextStyle get xsRegular => const TextStyle(
@@ -52,7 +52,6 @@ class AppTypography {
   TextStyle get mdRegular => const TextStyle(
         fontSize: 14,
         fontWeight: FontWeight.w400,
-        letterSpacing: 0.15,
       );
 
   TextStyle get mdMedium => const TextStyle(
@@ -71,7 +70,6 @@ class AppTypography {
   TextStyle get lgRegular => const TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.w400,
-        letterSpacing: 0.15,
       );
 
   TextStyle get lgMedium => const TextStyle(
@@ -97,6 +95,11 @@ class AppTypography {
         fontSize: 18,
         fontWeight: FontWeight.w500,
         letterSpacing: 0.15,
+      );
+
+  TextStyle get xlSemiBold => const TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w600,
       );
 
   TextStyle get xlBold => const TextStyle(
@@ -126,15 +129,14 @@ class AppTypography {
 
   //* xxxl = extra extra extra large
   TextStyle get xxxlRegular => const TextStyle(
-        fontSize: 24,
+        fontSize: 26,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.15,
       );
 
   TextStyle get xxxlMedium => const TextStyle(
-        fontSize: 24,
+        fontSize: 26,
         fontWeight: FontWeight.w500,
-        letterSpacing: 0.15,
       );
 
   TextStyle get xxxlBold => const TextStyle(

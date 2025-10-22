@@ -49,7 +49,7 @@ final class ThemingProvider extends $NotifierProvider<Theming, AppThemes> {
   }
 }
 
-String _$themingHash() => r'8e4a7a089aed3b2b3313e19771054e63ab021e5a';
+String _$themingHash() => r'f682670a70ac45ea2662b642e2fe7d4b0a07c4f7';
 
 /// {@template theme_provider}
 /// Provider for the theme

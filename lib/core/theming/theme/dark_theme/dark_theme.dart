@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hive_crypto_wallet_app/core/theming/core/base_color_palette.dart';
-import 'package:hive_crypto_wallet_app/core/theming/core/base_theme.dart';
-import 'package:hive_crypto_wallet_app/core/theming/theme/dark_theme/color_palette_dark.dart';
+import 'package:pokedex_global/core/theming/core/base_color_palette.dart';
+import 'package:pokedex_global/core/theming/core/base_theme.dart';
+import 'package:pokedex_global/core/theming/theme/dark_theme/color_palette_dark.dart';
 
 /// {@template dark_theme}
 /// Dark theme for the app

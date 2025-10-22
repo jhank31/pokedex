@@ -67,8 +67,13 @@ abstract class BaseColorPalette {
 
   /// Pure colors
   /// White color
-  Color get white => const Color(0xFFFFFFFF);
+  Color get white => const Color(0xFFFAFAFA);
 
   /// Black color
   Color get black => const Color(0xFF000000);
+
+  /// Text colors
+  Color get textBlack => const Color(0xFF121212);
+
+  Color get textWhite => const Color(0xFFFAFAFA);
 }

@@ -109,6 +109,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Welcome, {username}!'**
   String greetUser(Object username);
+
+  /// No description provided for @startOnboardingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'All Pokémon in one place'**
+  String get startOnboardingTitle;
+
+  /// No description provided for @startOnboardingDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Access a wide list of Pokémon from all generations created by Nintendo'**
+  String get startOnboardingDescription;
+
+  /// No description provided for @endOnboardingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'All Pokémon in one place'**
+  String get endOnboardingTitle;
+
+  /// No description provided for @endOnboardingDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Access a wide list of Pokémon from all generations created by Nintendo'**
+  String get endOnboardingDescription;
+
+  /// No description provided for @continueButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueButton;
+
+  /// No description provided for @finishButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish'**
+  String get finishButton;
 }
 
 class _AppLocalizationsDelegate

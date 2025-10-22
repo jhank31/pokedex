@@ -1,1 +1,1 @@
-export 'auth_endpoints.dart';
+export 'pokemon_endpoints.dart';

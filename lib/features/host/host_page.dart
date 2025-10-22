@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:hive_crypto_wallet_app/features/host/view/host_view.dart';
+import 'package:pokedex_global/features/host/view/host_view.dart';
 
 /// {@template host_page}
 /// A page that displays the host view.

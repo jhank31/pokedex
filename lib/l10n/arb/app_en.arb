@@ -1,5 +1,11 @@
 {
   "@@locale": "en",
   "hello": "Hello",
-  "greetUser": "Welcome, {username}!"
+  "greetUser": "Welcome, {username}!",
+  "startOnboardingTitle": "All Pokémon in one place",
+  "startOnboardingDescription": "Access a wide list of Pokémon from all generations created by Nintendo",
+  "endOnboardingTitle": "All Pokémon in one place",
+  "endOnboardingDescription": "Access a wide list of Pokémon from all generations created by Nintendo",
+  "continueButton": "Continue",
+  "finishButton": "Finish"
 }

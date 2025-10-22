@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hive_crypto_wallet_app/core/theming/core/base_color_palette.dart';
+import 'package:pokedex_global/core/theming/core/base_color_palette.dart';
 
 /// {@template color_palette_dark}
 /// Color palette for the dark theme

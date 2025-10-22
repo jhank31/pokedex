@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:hive_crypto_wallet_app/core/router/app_router.gr.dart';
-import 'package:hive_crypto_wallet_app/shared/hive_kit/hive_kit.dart';
+import 'package:pokedex_global/core/router/app_router.gr.dart';
+import 'package:pokedex_global/shared/pokedex_ui_kit/navbar_with_scaffold/navbar_with_scaffold.dart';
 
 /// {@template host_view}
 /// A view that displays the host.
@@ -15,7 +15,7 @@ class HostView extends StatelessWidget {
     return AutoTabsRouter(
       routes: const [
         HomeRoute(),
-        MarketRoute(),
+        FavoritesRoute(),
       ],
       transitionBuilder: (context, child, animation) {
         return FadeTransition(opacity: animation, child: child);

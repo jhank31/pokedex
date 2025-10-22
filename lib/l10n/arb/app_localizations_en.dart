@@ -15,4 +15,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String greetUser(Object username) {
     return 'Welcome, $username!';
   }
+
+  @override
+  String get startOnboardingTitle => 'All Pokémon in one place';
+
+  @override
+  String get startOnboardingDescription =>
+      'Access a wide list of Pokémon from all generations created by Nintendo';
+
+  @override
+  String get endOnboardingTitle => 'All Pokémon in one place';
+
+  @override
+  String get endOnboardingDescription =>
+      'Access a wide list of Pokémon from all generations created by Nintendo';
+
+  @override
+  String get continueButton => 'Continue';
+
+  @override
+  String get finishButton => 'Finish';
 }

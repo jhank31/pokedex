@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:hive_crypto_wallet_app/core/router/app_router.gr.dart';
+import 'package:pokedex_global/core/router/app_router.gr.dart';
 
 /// {@template app_router}
 /// The router for the application.
@@ -18,7 +18,9 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: TalkerRoute.page),
         AutoRoute(page: HostRoute.page, children: [
           AutoRoute(page: HomeRoute.page),
-          AutoRoute(page: MarketRoute.page),
+          AutoRoute(page: FavoritesRoute.page),
         ]),
+        AutoRoute(page: OnboardingRoute.page),
+        AutoRoute(page: PokemonDetailsRoute.page),
       ];
 }

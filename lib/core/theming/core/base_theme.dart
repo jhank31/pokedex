@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hive_crypto_wallet_app/core/theming/core/app_typography.dart';
-import 'package:hive_crypto_wallet_app/core/theming/core/base_color_palette.dart';
+import 'package:pokedex_global/core/theming/core/app_typography.dart';
+import 'package:pokedex_global/core/theming/core/base_color_palette.dart';
 
 abstract class BaseTheme {
   const BaseTheme();
@@ -40,6 +40,14 @@ abstract class BaseTheme {
   ThemeData get theme;
 
   ThemeData get baseTheme => ThemeData(
+        scaffoldBackgroundColor: baseColorPalette.white,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            backgroundColor:
+                WidgetStateProperty.all(baseColorPalette.primaryColor),
+            foregroundColor: WidgetStateProperty.all(baseColorPalette.white),
+          ),
+        ),
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: ButtonStyle(
             padding: WidgetStateProperty.all(
@@ -82,7 +90,7 @@ abstract class BaseTheme {
           foregroundColor: baseColorPalette.white,
         ),
         buttonTheme: ButtonThemeData(
-          buttonColor: baseColorPalette.secondaryColor,
+          buttonColor: baseColorPalette.primaryColor,
           textTheme: ButtonTextTheme.primary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(7),
@@ -126,6 +134,19 @@ abstract class BaseTheme {
           backgroundColor: baseColorPalette.primaryColor,
           selectedItemColor: baseColorPalette.white,
           unselectedItemColor: baseColorPalette.white.withValues(alpha: 0.5),
+        ),
+        textTheme: TextTheme(
+          bodyLarge: TextStyle(
+            color: baseColorPalette.textBlack,
+            fontFamily: typography.primaryFontFamily,
+          ),
+          bodyMedium: TextStyle(
+            color: baseColorPalette.textBlack,
+          ),
+          titleLarge: TextStyle(
+            color: baseColorPalette.textBlack,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         useMaterial3: true,
         fontFamily: typography.primaryFontFamily,
