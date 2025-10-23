@@ -271,6 +271,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Change Theme'**
   String get changeTheme;
+
+  /// No description provided for @filterPokemons.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter according to your preferences'**
+  String get filterPokemons;
+
+  /// No description provided for @type.
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get type;
+
+  /// No description provided for @apply.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get apply;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
 }
 
 class _AppLocalizationsDelegate

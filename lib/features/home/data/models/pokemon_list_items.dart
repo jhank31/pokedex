@@ -20,6 +20,4 @@ abstract class PokemonListItems with _$PokemonListItems {
   /// {@macro pokemon_list_items}
   factory PokemonListItems.fromJson(Map<String, dynamic> json) =>
       _$PokemonListItemsFromJson(json);
-
-  
 }

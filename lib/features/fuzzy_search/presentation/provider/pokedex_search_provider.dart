@@ -16,19 +16,23 @@ class PokedexSearch extends _$PokedexSearch {
 
   @override
   FutureOr<List<PokemonDetailEntity>> build() async {
-    // 🔄 Mantiene el cache actualizado con los datos del home
+    // keep the cache update with the data of the home
     ref.listen(pokedexListProvider, (prev, next) {
-      next.whenData(_syncCache);
+      next.whenData((data) => _syncCache(data.pokemons));
     });
 
-    final current = ref.read(pokedexListProvider).value ?? [];
+    final current = ref.read(pokedexListProvider).when(
+          data: (data) => data.pokemons,
+          error: (error, stackTrace) => <PokemonDetailEntity>[],
+          loading: () => <PokemonDetailEntity>[],
+        );
     _syncCache(current);
 
-    // Estado inicial vacío → no renderiza nada
+    // initial state empty → no render anything
     return [];
   }
 
-  /// 🔁 Sincroniza los nuevos pokémon con el cache
+  /// synchronize the new pokémon with the cache
   void _syncCache(List<PokemonDetailEntity> newData) {
     bool updated = false;
     for (final p in newData) {
@@ -40,12 +44,12 @@ class PokedexSearch extends _$PokedexSearch {
     if (updated) _fuzzy = FuzzyPokemonSearchService(_cache);
   }
 
-  /// 🧹 Limpia la búsqueda → deja la vista vacía
+  /// clear the search → leave the view empty
   void clear() {
     state = const AsyncData([]);
   }
 
-  /// 🔍 Busca primero localmente, luego remoto
+  /// search first locally, then remotely
   void search(String query) {
     _debounce?.cancel();
     _debounce = Timer(const Duration(milliseconds: 300), () async {
@@ -64,7 +68,7 @@ class PokedexSearch extends _$PokedexSearch {
         state = const AsyncLoading();
         final getDetail = ref.read(getPokemonDetailUseCaseProvider);
         final pokemon =
-            await getDetail(GetPokemonDetailParams(idOrName: query));
+            await getDetail.call(GetPokemonDetailParams(idOrName: query));
         state = AsyncData([pokemon]);
       } catch (e, s) {
         state = AsyncError(e, s);

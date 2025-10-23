@@ -28,5 +28,9 @@
   "profile": "Perfil",
   "availableSoon": "¡Muy pronto disponible!",
   "availableSoonDescription": "Estamos trabajando para traerte esta sección. Vuelve más adelante para descubrir todas las novedades.",
-  "changeTheme": "Cambiar Tema"
+  "changeTheme": "Cambiar Tema",
+  "filterPokemons": "Filtra por tus preferencias",
+  "type": "Tipo",
+  "apply": "Aplicar",
+  "cancel": "Cancelar"
 }

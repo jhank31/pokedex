@@ -67,4 +67,48 @@ enum PokemonTypeEnum {
         return normal;
     }
   }
+
+  /// Returns the name of the type.
+  String get typeName {
+    switch (this) {
+      case PokemonTypeEnum.normal:
+        return 'normal';
+      case PokemonTypeEnum.fire:
+        return 'fire';
+      case PokemonTypeEnum.water:
+        return 'water';
+      case PokemonTypeEnum.electric:
+        return 'electric';
+      case PokemonTypeEnum.grass:
+        return 'grass';
+      case PokemonTypeEnum.ice:
+        return 'ice';
+      case PokemonTypeEnum.fighting:
+        return 'fighting';
+      case PokemonTypeEnum.poison:
+        return 'poison';
+      case PokemonTypeEnum.ground:
+        return 'ground';
+      case PokemonTypeEnum.flying:
+        return 'flying';
+      case PokemonTypeEnum.psychic:
+        return 'psychic';
+      case PokemonTypeEnum.bug:
+        return 'bug';
+      case PokemonTypeEnum.rock:
+        return 'rock';
+      case PokemonTypeEnum.ghost:
+        return 'ghost';
+      case PokemonTypeEnum.dragon:
+        return 'dragon';
+      case PokemonTypeEnum.dark:
+        return 'dark';
+      case PokemonTypeEnum.steel:
+        return 'steel';
+      case PokemonTypeEnum.sinister:
+        return 'sinister';
+      case PokemonTypeEnum.fairy:
+        return 'fairy';
+    }
+  }
 }

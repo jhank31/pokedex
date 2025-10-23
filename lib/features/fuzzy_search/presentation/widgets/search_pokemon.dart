@@ -11,14 +11,14 @@ class SearchPokemon extends HookConsumerWidget {
   /// {@macro search_pokemon}
   const SearchPokemon({
     super.key,
-    required this.onSearch,
     required this.label,
+    this.onSearch,
     this.enabled = true,
     this.backIcon,
   });
 
   /// The callback of the search.
-  final Future<void> Function(String) onSearch;
+  final Future<void> Function(String)? onSearch;
 
   /// The label of the search.
   final String label;
@@ -51,7 +51,7 @@ class SearchPokemon extends HookConsumerWidget {
               enabled: enabled,
               focusNode: focusNode,
               controller: textEditingController,
-              onChanged: (value) async => await onSearch(value),
+              onChanged: (value) async => await onSearch?.call(value),
               onTapOutside: (event) => FocusScope.of(context).unfocus(),
               style: theme.baseTheme.typography.mdRegular.copyWith(
                 color: theme.baseTheme.isDark

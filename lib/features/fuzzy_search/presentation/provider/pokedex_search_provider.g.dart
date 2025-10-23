@@ -33,7 +33,7 @@ final class PokedexSearchProvider
   PokedexSearch create() => PokedexSearch();
 }
 
-String _$pokedexSearchHash() => r'810be8379d183732dcf444896ca3f0e4023d2db6';
+String _$pokedexSearchHash() => r'26b1a8fc2004e5d454b20720b0c69def09b547d7';
 
 abstract class _$PokedexSearch
     extends $AsyncNotifier<List<PokemonDetailEntity>> {

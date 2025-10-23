@@ -101,4 +101,16 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get changeTheme => 'Cambiar Tema';
+
+  @override
+  String get filterPokemons => 'Filtra por tus preferencias';
+
+  @override
+  String get type => 'Tipo';
+
+  @override
+  String get apply => 'Aplicar';
+
+  @override
+  String get cancel => 'Cancelar';
 }

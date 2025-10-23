@@ -1,76 +1,163 @@
 import 'dart:async';
+import 'package:pokedex_global/core/errors/provider/error_handler_provider.dart';
 import 'package:pokedex_global/features/home/domain/usecases/get_pokemons_list_usecase.dart';
 import 'package:pokedex_global/features/home/presentation/di/pokedex_dependency_inyection.dart';
+import 'package:pokedex_global/features/home/presentation/provider/pokedex_state/pokedex_state.dart';
+import 'package:pokedex_global/features/home/presentation/provider/pokemon_types_agregator_provider.dart';
 import 'package:pokedex_global/features/pokemon_details/domain/entities/entities.dart';
+import 'package:pokedex_global/features/pokemon_details/domain/enums/enums.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'pokedex_provider.g.dart';
 
-/// {@template pokedex_list}
-/// Provider for the pokedex list.
-/// {@endtemplate}
 @Riverpod(keepAlive: true)
 class PokedexList extends _$PokedexList {
+  /// The limit of the pokedex list.
   static const int _limit = 20;
+
+  /// The offset of the pokedex list.
   int _offset = 0;
-  bool _isLoadingMore = false;
-  bool _hasLoadedInitial = false;
+
+  /// The list of all pokemons.
+  final List<PokemonDetailEntity> _allPokemons = [];
 
   @override
-  FutureOr<List<PokemonDetailEntity>> build() async {
-    return const [];
-  }
-
-  /// Initializes the list only once.
-  Future<void> init() async {
-    if (_hasLoadedInitial) return;
-    _hasLoadedInitial = true;
-
+  FutureOr<PokedexState> build() async {
+    /// Initialize the state with loading.
     state = const AsyncLoading();
+
     try {
-      _offset = 0;
-      final pokemons = await _fetchPokemons();
-      state = AsyncData(pokemons);
-    } catch (e, s) {
-      state = AsyncError(e, s);
+      /// Load the initial pokemons.
+      final pokemons = await _loadInitialPokemons();
+      return PokedexState(
+        pokemons: pokemons,
+        isLoading: false,
+      );
+    } catch (e) {
+      /// Handle the error.
+
+      return PokedexState(
+        isLoading: false,
+        failure:
+            ref.read(errorHandlerProvider).handleError(e, StackTrace.current),
+      );
     }
   }
 
-  /// Fetches the pokemons list.
-  Future<List<PokemonDetailEntity>> _fetchPokemons() async {
+  /// Load the initial pokemons.
+  Future<List<PokemonDetailEntity>> _loadInitialPokemons() async {
+    _offset = 0;
     final getPokemonsListUseCase = ref.read(getPokemonsListUseCaseProvider);
-    final pokedexList = await getPokemonsListUseCase(
+    final pokemons = await getPokemonsListUseCase(
       GetPokemonsListParams(limit: _limit, offset: _offset),
     );
-    return pokedexList;
+    _allPokemons
+      ..clear()
+      ..addAll(pokemons);
+
+    ref.read(pokemonTypesAgregatorProvider.notifier).collectFrom(pokemons);
+    return _allPokemons;
   }
 
-  /// Loads more pokemons.
+  /// Load more pokemons.
   Future<void> loadMore() async {
-    if (_isLoadingMore || state.isLoading) return;
-    _isLoadingMore = true;
+    final current = state.hasValue ? state.value : null;
+
+    /// If the state is not loading or has active filters, return.
+    if (current == null || current.isLoadingMore || current.hasActiveFilters) {
+      return;
+    }
+
+    /// Set the state to loading more.
+    state = AsyncData(current.copyWith(isLoadingMore: true));
 
     try {
       _offset += _limit;
-      final morePokemons = await _fetchPokemons();
-      state = AsyncData([...?state.value, ...morePokemons]);
+      final getPokemonsListUseCase = ref.read(getPokemonsListUseCaseProvider);
+      final morePokemons = await getPokemonsListUseCase(
+        GetPokemonsListParams(limit: _limit, offset: _offset),
+      );
+
+      _allPokemons.addAll(morePokemons);
+      ref
+          .read(pokemonTypesAgregatorProvider.notifier)
+          .collectFrom(morePokemons);
+
+      state = AsyncData(
+        current.copyWith(
+          pokemons: [..._allPokemons],
+          isLoadingMore: false,
+        ),
+      );
     } catch (e, s) {
-      state = AsyncError(e, s);
-    } finally {
-      _isLoadingMore = false;
+      state = AsyncData(
+        current.copyWith(
+          isLoadingMore: false,
+          failure: ref.read(errorHandlerProvider).handleError(e, s),
+        ),
+      );
     }
   }
 
-  
-  /// Refreshes the list.
+  /// Refresh the list.
   Future<void> refreshList() async {
-    _offset = 0;
-    state = const AsyncLoading();
+    state = AsyncData(state.value!.copyWith(isLoading: true));
     try {
-      final pokemons = await _fetchPokemons();
-      state = AsyncData(pokemons);
-    } catch (e, s) {
-      state = AsyncError(e, s);
+      final pokemons = await _loadInitialPokemons();
+      state = AsyncData(
+        PokedexState(pokemons: pokemons),
+      );
+    } catch (e) {
+      state = AsyncData(
+        PokedexState(
+            failure: ref
+                .read(errorHandlerProvider)
+                .handleError(e, StackTrace.current)),
+      );
     }
+  }
+
+  /// Filter the list by types.
+  void filterByTypes(List<String> types) {
+    final current = state.hasValue ? state.value : null;
+    if (current == null) return;
+
+    if (types.isEmpty) {
+      state = AsyncData(
+        current.copyWith(
+          pokemons: [..._allPokemons],
+          hasActiveFilters: false,
+          activeFilters: [],
+        ),
+      );
+      return;
+    }
+
+    final filtered = _allPokemons.where((pokemon) {
+      return pokemon.types.any(
+        (PokemonTypeEnum type) => types.contains(type.typeName),
+      );
+    }).toList();
+
+    state = AsyncData(
+      current.copyWith(
+        pokemons: filtered,
+        hasActiveFilters: true,
+        activeFilters: types,
+      ),
+    );
+  }
+
+  /// Clear the filters.
+  void clearFilters() {
+    final current = state.hasValue ? state.value : null;
+    if (current == null) return;
+    state = AsyncData(
+      current.copyWith(
+        pokemons: [..._allPokemons],
+        hasActiveFilters: false,
+        activeFilters: [],
+      ),
+    );
   }
 }

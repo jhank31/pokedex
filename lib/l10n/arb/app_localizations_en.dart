@@ -101,4 +101,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get changeTheme => 'Change Theme';
+
+  @override
+  String get filterPokemons => 'Filter according to your preferences';
+
+  @override
+  String get type => 'Type';
+
+  @override
+  String get apply => 'Apply';
+
+  @override
+  String get cancel => 'Cancel';
 }
