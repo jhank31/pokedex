@@ -44,14 +44,16 @@ class PokemonGenderBar extends StatelessWidget {
             Text(l10n.gender,
                 textAlign: TextAlign.center,
                 style: theme.baseTheme.typography.mdRegular.copyWith(
-                    color:
-                        theme.baseTheme.baseColorPalette.textBlackSecondary)),
+                    color: theme.baseTheme.isDark
+                        ? theme.baseTheme.baseColorPalette.textWhite
+                        : theme.baseTheme.baseColorPalette.textBlackSecondary)),
             Gap.height16,
             Text(l10n.unknown,
                 textAlign: TextAlign.center,
                 style: theme.baseTheme.typography.mdRegular.copyWith(
-                    color:
-                        theme.baseTheme.baseColorPalette.textBlackSecondary)),
+                    color: theme.baseTheme.isDark
+                        ? theme.baseTheme.baseColorPalette.textWhite
+                        : theme.baseTheme.baseColorPalette.textBlackSecondary)),
             Gap.height16,
             Container(
               height: Sizes.p10,
@@ -68,8 +70,10 @@ class PokemonGenderBar extends StatelessWidget {
               Text(l10n.gender.toUpperCase(),
                   textAlign: TextAlign.center,
                   style: theme.baseTheme.typography.mdRegular.copyWith(
-                      color:
-                          theme.baseTheme.baseColorPalette.textBlackSecondary)),
+                      color: theme.baseTheme.isDark
+                          ? theme.baseTheme.baseColorPalette.textWhite
+                          : theme
+                              .baseTheme.baseColorPalette.textBlackSecondary)),
               Gap.height16,
               ClipRRect(
                 borderRadius: BorderRadius.circular(Sizes.p50),
@@ -99,15 +103,19 @@ class PokemonGenderBar extends StatelessWidget {
                   Row(
                     children: [
                       Icon(Icons.male,
-                          color: theme
-                              .baseTheme.baseColorPalette.textBlackSecondary,
+                          color: theme.baseTheme.isDark
+                              ? theme.baseTheme.baseColorPalette.textWhite
+                              : theme.baseTheme.baseColorPalette
+                                  .textBlackSecondary,
                           size: Sizes.p16),
                       Gap.width4,
                       Text(
                         '${maleRate.toStringAsFixed(1).replaceAll('.', ',')}%',
                         style: theme.baseTheme.typography.smMedium.copyWith(
-                          color: theme
-                              .baseTheme.baseColorPalette.textBlackSecondary,
+                          color: theme.baseTheme.isDark
+                              ? theme.baseTheme.baseColorPalette.textWhite
+                              : theme.baseTheme.baseColorPalette
+                                  .textBlackSecondary,
                         ),
                       ),
                     ],
@@ -115,15 +123,19 @@ class PokemonGenderBar extends StatelessWidget {
                   Row(
                     children: [
                       Icon(Icons.female,
-                          color: theme
-                              .baseTheme.baseColorPalette.textBlackSecondary,
+                          color: theme.baseTheme.isDark
+                              ? theme.baseTheme.baseColorPalette.textWhite
+                              : theme.baseTheme.baseColorPalette
+                                  .textBlackSecondary,
                           size: Sizes.p16),
                       Gap.width4,
                       Text(
                         '${femaleRate.toStringAsFixed(1).replaceAll('.', ',')}%',
                         style: theme.baseTheme.typography.smMedium.copyWith(
-                          color: theme
-                              .baseTheme.baseColorPalette.textBlackSecondary,
+                          color: theme.baseTheme.isDark
+                              ? theme.baseTheme.baseColorPalette.textWhite
+                              : theme.baseTheme.baseColorPalette
+                                  .textBlackSecondary,
                         ),
                       ),
                     ],

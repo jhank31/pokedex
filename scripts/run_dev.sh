@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Script to run the app in development mode
-echo "🚀 Starting Hive Crypto Wallet App in DEVELOPMENT mode..."
+echo "🚀 Starting Pokedex Global App in DEVELOPMENT mode..."
 
 # Check if flutter is available
 if ! command -v flutter &> /dev/null; then

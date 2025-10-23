@@ -2,10 +2,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokedex_global/core/theming/core/provider/theming_provider.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 /// this is the entry point of the application
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  FlutterNativeSplash.remove();
 
   final container = ProviderContainer();
   final theme = await container.read(themingProvider.notifier).getTheme();

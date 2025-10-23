@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:pokedex_global/core/errors/exceptions/network_exception.dart';
 import 'package:pokedex_global/core/errors/exceptions/not_found_exception.dart';
@@ -61,24 +60,6 @@ class ErrorHandlerImpl implements ErrorHandler {
     // Handle timeout exceptions
     if (error is TimeoutException) {
       return NetworkException.timeout(
-        exception: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    // Handle format exceptions (parsing errors)
-    if (error is FormatException) {
-      return ValidationException.parsingError(
-        message: error.message,
-        exception: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    // Handle type errors (usually data parsing issues)
-    if (error is TypeError) {
-      return ValidationException.parsingError(
-        message: 'Type error: ${error.toString()}',
         exception: error,
         stackTrace: stackTrace,
       );
@@ -226,29 +207,5 @@ class ErrorHandlerImpl implements ErrorHandler {
     String? context,
   }) {
     throw handleError(error, stackTrace, context: context);
-  }
-
-  @override
-  Future<T> execute<T>(
-    Future<T> Function() operation, {
-    String? context,
-  }) async {
-    try {
-      return await operation();
-    } catch (e, stackTrace) {
-      throwError(e, stackTrace, context: context);
-    }
-  }
-
-  @override
-  T executeSync<T>(
-    T Function() operation, {
-    String? context,
-  }) {
-    try {
-      return operation();
-    } catch (e, stackTrace) {
-      throwError(e, stackTrace, context: context);
-    }
   }
 }

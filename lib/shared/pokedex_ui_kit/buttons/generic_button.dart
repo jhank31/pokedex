@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokedex_global/core/const/sizes.dart';
+import 'package:pokedex_global/core/theming/core/provider/theming_provider.dart';
 
 /// {@template generic_button}
 /// A generic button that can be used to navigate to a page or perform an action.
@@ -17,7 +18,7 @@ class GenericButton extends ConsumerWidget {
       horizontal: Sizes.p16,
       vertical: Sizes.p10,
     ),
-    this.color = Colors.transparent,
+    this.color,
   });
 
   /// The callback to be called when the button is pressed.
@@ -33,13 +34,14 @@ class GenericButton extends ConsumerWidget {
   final double width;
 
   /// color of the button.
-  final Color color;
+  final Color? color;
 
   /// padding of the button.
   final EdgeInsetsGeometry padding;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final theme = ref.watch(themingProvider);
     return MaterialButton(
       onPressed: onPressed,
       splashColor: Colors.transparent,
@@ -50,7 +52,7 @@ class GenericButton extends ConsumerWidget {
             alignment: Alignment.center,
             padding: padding,
             decoration: BoxDecoration(
-              color: color,
+              color: color ?? theme.baseTheme.baseColorPalette.primaryColor,
               borderRadius: BorderRadius.circular(Sizes.p100),
             ),
             child: child),

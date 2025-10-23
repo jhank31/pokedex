@@ -156,6 +156,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/soon.png
   AssetGenImage get soon => const AssetGenImage('assets/images/soon.png');
 
+  /// File path: assets/images/splash_logo.png
+  AssetGenImage get splashLogo =>
+      const AssetGenImage('assets/images/splash_logo.png');
+
   /// File path: assets/images/start_onboarding.png
   AssetGenImage get startOnboarding =>
       const AssetGenImage('assets/images/start_onboarding.png');
@@ -165,7 +169,7 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values =>
-      [endOnboarding, error, logo, soon, startOnboarding];
+      [endOnboarding, error, logo, soon, splashLogo, startOnboarding];
 }
 
 class $AssetsFontsPoppinsGen {

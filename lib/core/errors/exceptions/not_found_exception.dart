@@ -17,27 +17,6 @@ class NotFoundException extends AppFailure {
     super.exception,
   });
 
-  /// Creates a NotFoundException with resource information
-  factory NotFoundException.resource({
-    required String resourceType,
-    String? resourceId,
-    String? message,
-    Object? exception,
-    StackTrace? stackTrace,
-  }) {
-    final msg = message ??
-        (resourceId != null
-            ? '$resourceType with id "$resourceId" not found'
-            : '$resourceType not found');
-    return NotFoundException(
-      message: msg,
-      resourceType: resourceType,
-      code: 'NOT_FOUND_404',
-      exception: exception,
-      stackTrace: stackTrace,
-    );
-  }
-
   @override
   String get userMessage => 'The requested item could not be found.';
 

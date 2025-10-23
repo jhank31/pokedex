@@ -30,31 +30,7 @@ class ValidationException extends AppFailure {
         stackTrace: stackTrace,
       );
 
-  /// Creates a ValidationException for invalid format
-  factory ValidationException.invalidFormat({
-    required String field,
-    String? message,
-    StackTrace? stackTrace,
-  }) =>
-      ValidationException(
-        message: message ?? '$field has invalid format',
-        field: field,
-        code: 'VALIDATION_INVALID_FORMAT',
-        stackTrace: stackTrace,
-      );
-
-  /// Creates a ValidationException for parsing errors
-  factory ValidationException.parsingError({
-    String? message,
-    Object? exception,
-    StackTrace? stackTrace,
-  }) =>
-      ValidationException(
-        message: message ?? 'Failed to parse data',
-        code: 'VALIDATION_PARSING_ERROR',
-        exception: exception,
-        stackTrace: stackTrace,
-      );
+  
 
   @override
   String get userMessage => message;

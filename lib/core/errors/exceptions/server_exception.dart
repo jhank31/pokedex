@@ -27,32 +27,7 @@ class ServerException extends AppFailure {
         stackTrace: stackTrace,
       );
 
-  /// Creates a ServerException for internal server error (500)
-  factory ServerException.internal({
-    String? message,
-    Object? exception,
-    StackTrace? stackTrace,
-  }) =>
-      ServerException(
-        message: message ?? 'Internal server error. Please try again later.',
-        code: 'SERVER_ERROR_500',
-        exception: exception,
-        stackTrace: stackTrace,
-      );
-
-  /// Creates a ServerException for service unavailable (503)
-  factory ServerException.unavailable({
-    String? message,
-    Object? exception,
-    StackTrace? stackTrace,
-  }) =>
-      ServerException(
-        message: message ?? 'Service temporarily unavailable.',
-        code: 'SERVER_ERROR_503',
-        exception: exception,
-        stackTrace: stackTrace,
-      );
-
+ 
   @override
   String get userMessage =>
       'Server error. Our team has been notified. Please try again later.';

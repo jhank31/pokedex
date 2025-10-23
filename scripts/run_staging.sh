@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Script to run the app in staging mode
-echo "🚀 Starting Hive Crypto Wallet App in STAGING mode..."
+echo "🚀 Starting Pokedex Global App in STAGING mode..."
 
 # Check if flutter is available
 if ! command -v flutter &> /dev/null; then

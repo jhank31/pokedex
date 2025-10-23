@@ -32,13 +32,11 @@ class BasicPokemonInformation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Hero(
-          tag: '$tag-name-${pokemon.name}-${pokemon.id}',
+        tag: '$tag-name-${pokemon.name}-${pokemon.id}',
         child: Material(
           type: MaterialType.transparency,
           child: Text(capitalizeString(pokemon.name),
-              style: theme.baseTheme.typography.extraxxlMedium.copyWith(
-                color: theme.baseTheme.baseColorPalette.textBlack,
-              )),
+              style: theme.baseTheme.typography.extraxxlMedium),
         ),
       ),
       Gap.height4,
@@ -48,7 +46,9 @@ class BasicPokemonInformation extends StatelessWidget {
           type: MaterialType.transparency,
           child: Text('Nº${formatPokemonId(pokemon.id)}',
               style: theme.baseTheme.typography.lgMedium.copyWith(
-                color: theme.baseTheme.baseColorPalette.textBlackSecondary,
+                color: theme.baseTheme.isDark
+                    ? theme.baseTheme.baseColorPalette.textWhite
+                    : theme.baseTheme.baseColorPalette.textBlackSecondary,
               )),
         ),
       ),
@@ -72,7 +72,9 @@ class BasicPokemonInformation extends StatelessWidget {
       Text(
         pokemon.description,
         style: theme.baseTheme.typography.mdRegular.copyWith(
-            color: theme.baseTheme.baseColorPalette.textBlackSecondary),
+            color: theme.baseTheme.isDark
+                ? theme.baseTheme.baseColorPalette.textWhite
+                : theme.baseTheme.baseColorPalette.textBlackSecondary),
       ),
     ]);
   }

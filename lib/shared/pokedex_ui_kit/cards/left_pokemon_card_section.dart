@@ -41,7 +41,9 @@ class LeftPokemonCardSection extends StatelessWidget {
               type: MaterialType.transparency,
               child: Text('Nº${formatPokemonId(pokemon.id)}',
                   style: theme.baseTheme.typography.smSemiBold.copyWith(
-                    color: theme.baseTheme.baseColorPalette.textBlackSecondary,
+                    color: theme.baseTheme.isDark
+                        ? theme.baseTheme.baseColorPalette.textWhite
+                        : theme.baseTheme.baseColorPalette.textBlackSecondary,
                   )),
             ),
           ),
@@ -52,7 +54,9 @@ class LeftPokemonCardSection extends StatelessWidget {
               type: MaterialType.transparency,
               child: Text(capitalizeString(pokemon.name),
                   style: theme.baseTheme.typography.xxlSemiBold.copyWith(
-                    color: theme.baseTheme.baseColorPalette.textBlack,
+                    color: theme.baseTheme.isDark
+                        ? theme.baseTheme.baseColorPalette.textWhite
+                        : theme.baseTheme.baseColorPalette.textBlack,
                   )),
             ),
           ),
@@ -64,8 +68,7 @@ class LeftPokemonCardSection extends StatelessWidget {
                 .toList()
                 .map(
                   (type) => Hero(
-                      tag:
-                          '$tag-type-${pokemon.id}-${type.name}',
+                      tag: '$tag-type-${pokemon.id}-${type.name}',
                       child: Material(
                         type: MaterialType.transparency,
                         child: ChipPokemonAbility(theme: theme, type: type),

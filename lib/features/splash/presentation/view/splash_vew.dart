@@ -32,7 +32,7 @@ class SplashView extends HookConsumerWidget {
         await Future.delayed(const Duration(milliseconds: 400));
 
         expandToFull.value = true;
-        scale.value = 12;
+        scale.value = 0.0;
         await Future.delayed(const Duration(milliseconds: 400));
 
         final hasSeenOnboarding =
@@ -66,7 +66,7 @@ class SplashView extends HookConsumerWidget {
           ),
           Center(
             child: AnimatedScale(
-              duration: const Duration(milliseconds: 800),
+              duration: const Duration(milliseconds: 400),
               curve: Curves.easeInOutBack,
               scale: scale.value,
               child: SizedBox(

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Script to run the app in production mode
-echo "🚀 Starting Hive Crypto Wallet App in PRODUCTION mode..."
+echo "🚀 Starting Pokedex Global App in PRODUCTION mode..."
 
 # Check if flutter is available
 if ! command -v flutter &> /dev/null; then

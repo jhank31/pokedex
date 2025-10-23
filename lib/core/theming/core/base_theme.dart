@@ -116,30 +116,13 @@ abstract class BaseTheme {
           backgroundColor: Colors.transparent,
         ),
         bottomSheetTheme: BottomSheetThemeData(
-          backgroundColor: baseColorPalette.white,
-        ),
-        dialogTheme: DialogThemeData(
-          surfaceTintColor: baseColorPalette.white,
+          backgroundColor: baseColorPalette.background,
         ),
         cardTheme: CardThemeData(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
           color: baseColorPalette.white,
-        ),
-        listTileTheme: ListTileThemeData(
-          iconColor: baseColorPalette.white,
-          textColor: baseColorPalette.white,
-          tileColor: baseColorPalette.primaryColor,
-          contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
-        ),
-        bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          backgroundColor: baseColorPalette.background,
-          selectedItemColor: baseColorPalette.white,
-          unselectedItemColor: baseColorPalette.white.withValues(alpha: 0.5),
         ),
         textTheme: TextTheme(
           bodyLarge: TextStyle(
@@ -154,6 +137,18 @@ abstract class BaseTheme {
                 : baseColorPalette.textBlack,
           ),
           titleLarge: TextStyle(
+            color: isDark
+                ? baseColorPalette.textWhite
+                : baseColorPalette.textBlack,
+            fontWeight: FontWeight.bold,
+          ),
+          titleMedium: TextStyle(
+            color: isDark
+                ? baseColorPalette.textWhite
+                : baseColorPalette.textBlack,
+            fontWeight: FontWeight.bold,
+          ),
+          titleSmall: TextStyle(
             color: isDark
                 ? baseColorPalette.textWhite
                 : baseColorPalette.textBlack,
@@ -178,20 +173,10 @@ abstract class BaseTheme {
             },
           ),
         ),
-        
         useMaterial3: true,
         fontFamily: typography.primaryFontFamily,
         brightness: brightness,
         primaryColor: baseColorPalette.primaryColor,
-        dropdownMenuTheme: DropdownMenuThemeData(
-          menuStyle: MenuStyle(
-            backgroundColor: WidgetStatePropertyAll(
-              baseColorPalette.white,
-            ),
-            surfaceTintColor: WidgetStatePropertyAll(
-              baseColorPalette.white,
-            ),
-          ),
-        ),
+        
       );
 }

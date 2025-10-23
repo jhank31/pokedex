@@ -44,11 +44,18 @@ class ChipPokemonInformation extends StatelessWidget {
       children: [
         Row(
           children: [
-            SvgPicture.asset(icon),
+            SvgPicture.asset(icon,
+                colorFilter: ColorFilter.mode(
+                    theme.baseTheme.isDark
+                        ? theme.baseTheme.baseColorPalette.textWhite
+                        : theme.baseTheme.baseColorPalette.textBlack,
+                    BlendMode.srcIn)),
             Gap.width8,
             Text(text,
                 style: theme.baseTheme.typography.lgMedium.copyWith(
-                  color: theme.baseTheme.baseColorPalette.textBlackSecondary,
+                  color: theme.baseTheme.isDark
+                      ? theme.baseTheme.baseColorPalette.textWhite
+                      : theme.baseTheme.baseColorPalette.textBlackSecondary,
                 ))
           ],
         ),

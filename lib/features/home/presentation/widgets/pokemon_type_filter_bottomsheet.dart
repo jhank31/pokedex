@@ -46,7 +46,7 @@ class PokemonTypeFilterBottomSheet extends HookConsumerWidget {
     return Container(
       padding: const EdgeInsets.all(Sizes.p16),
       decoration: BoxDecoration(
-        color: theme.baseTheme.baseColorPalette.white,
+        color: theme.baseTheme.baseColorPalette.background,
         borderRadius:
             const BorderRadius.vertical(top: Radius.circular(Sizes.p20)),
       ),

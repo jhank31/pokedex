@@ -39,6 +39,22 @@ class _RouterWidget extends ConsumerWidget {
     ref.read(appDatabaseProvider);
     return AppLifeCycleListener(
       child: MaterialApp.router(
+        builder: (context, child) {
+          final mediaQuery = MediaQuery.of(context);
+          return MediaQuery(
+            data: mediaQuery.copyWith(
+              textScaler: TextScaler.linear(
+                mediaQuery.textScaler
+                    .clamp(
+                      minScaleFactor: 1.0,
+                      maxScaleFactor: 1.2,
+                    )
+                    .scale(1.0),
+              ),
+            ),
+            child: child!,
+          );
+        },
         debugShowCheckedModeBanner: false,
         routerConfig: appRouter.config(),
         theme: theme.baseTheme.theme,

@@ -18,8 +18,7 @@ abstract class ErrorHandler {
 
   /// Handles an error and throws the appropriate AppFailure
   ///
-  /// This is a convenience method that calls [handleError] and throws
-  /// the result immediately.
+  /// This method throws the appropriate AppFailure exception.
   Never throwError(
     Object error,
     StackTrace stackTrace, {
@@ -28,27 +27,4 @@ abstract class ErrorHandler {
     throw handleError(error, stackTrace, context: context);
   }
 
-  /// Executes a function and handles any errors that occur
-  Future<T> execute<T>(
-    Future<T> Function() operation, {
-    String? context,
-  }) async {
-    try {
-      return await operation();
-    } catch (e, stackTrace) {
-      throwError(e, stackTrace, context: context);
-    }
-  }
-
-  /// Executes a synchronous function and handles any errors that occur
-  T executeSync<T>(
-    T Function() operation, {
-    String? context,
-  }) {
-    try {
-      return operation();
-    } catch (e, stackTrace) {
-      throwError(e, stackTrace, context: context);
-    }
-  }
 }
