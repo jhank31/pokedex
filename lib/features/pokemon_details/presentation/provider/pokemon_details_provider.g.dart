@@ -76,7 +76,7 @@ final class PokemonDetailsProvider extends $FunctionalProvider<
   }
 }
 
-String _$pokemonDetailsHash() => r'07ef79cd3115b967a7dd9d64699434f13acd5291';
+String _$pokemonDetailsHash() => r'c23631d892c681da48f3722c1a1b6dc506b9c8ce';
 
 /// {@template pokemon_details_provider}
 /// Provider for the pokemon details.
@@ -98,9 +98,9 @@ final class PokemonDetailsFamily extends $Family
   /// {@endtemplate}
 
   PokemonDetailsProvider call(
-    String name,
+    String idOrName,
   ) =>
-      PokemonDetailsProvider._(argument: name, from: this);
+      PokemonDetailsProvider._(argument: idOrName, from: this);
 
   @override
   String toString() => r'pokemonDetailsProvider';

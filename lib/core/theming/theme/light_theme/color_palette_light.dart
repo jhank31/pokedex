@@ -42,6 +42,9 @@ final class ColorPaletteLight extends BaseColorPalette {
   Color get secondaryColor => secondary300;
 
   @override
+  Color get background => white;
+
+  @override
   ColorScheme get colorScheme => ColorScheme.fromSeed(
         seedColor: primary300,
       );

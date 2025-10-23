@@ -27,6 +27,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/bug.svg
   String get bug => 'assets/icons/bug.svg';
 
+  /// File path: assets/icons/category.svg
+  String get category => 'assets/icons/category.svg';
+
   /// File path: assets/icons/dragon.svg
   String get dragon => 'assets/icons/dragon.svg';
 
@@ -35,6 +38,9 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/fairy.svg
   String get fairy => 'assets/icons/fairy.svg';
+
+  /// File path: assets/icons/favorite.svg
+  String get favorite => 'assets/icons/favorite.svg';
 
   /// File path: assets/icons/fight.svg
   String get fight => 'assets/icons/fight.svg';
@@ -54,6 +60,12 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ground.svg
   String get ground => 'assets/icons/ground.svg';
 
+  /// File path: assets/icons/height.svg
+  String get height => 'assets/icons/height.svg';
+
+  /// File path: assets/icons/home.svg
+  String get home => 'assets/icons/home.svg';
+
   /// File path: assets/icons/ice.svg
   String get ice => 'assets/icons/ice.svg';
 
@@ -63,8 +75,14 @@ class $AssetsIconsGen {
   /// File path: assets/icons/poison.svg
   String get poison => 'assets/icons/poison.svg';
 
+  /// File path: assets/icons/pokeball.svg
+  String get pokeball => 'assets/icons/pokeball.svg';
+
   /// File path: assets/icons/psychic.svg
   String get psychic => 'assets/icons/psychic.svg';
+
+  /// File path: assets/icons/region.svg
+  String get region => 'assets/icons/region.svg';
 
   /// File path: assets/icons/rock.svg
   String get rock => 'assets/icons/rock.svg';
@@ -72,11 +90,20 @@ class $AssetsIconsGen {
   /// File path: assets/icons/sinister.svg
   String get sinister => 'assets/icons/sinister.svg';
 
+  /// File path: assets/icons/splash_logo.svg
+  String get splashLogo => 'assets/icons/splash_logo.svg';
+
   /// File path: assets/icons/steel.svg
   String get steel => 'assets/icons/steel.svg';
 
+  /// File path: assets/icons/user.svg
+  String get user => 'assets/icons/user.svg';
+
   /// File path: assets/icons/water.svg
   String get water => 'assets/icons/water.svg';
+
+  /// File path: assets/icons/weight.svg
+  String get weight => 'assets/icons/weight.svg';
 
   /// Directory path: assets/icons
   String get path => 'assets/icons';
@@ -84,23 +111,32 @@ class $AssetsIconsGen {
   /// List of all assets
   List<String> get values => [
         bug,
+        category,
         dragon,
         electric,
         fairy,
+        favorite,
         fight,
         fire,
         flying,
         ghost,
         grass,
         ground,
+        height,
+        home,
         ice,
         normal,
         poison,
+        pokeball,
         psychic,
+        region,
         rock,
         sinister,
+        splashLogo,
         steel,
-        water
+        user,
+        water,
+        weight
       ];
 }
 
@@ -111,8 +147,14 @@ class $AssetsImagesGen {
   AssetGenImage get endOnboarding =>
       const AssetGenImage('assets/images/end_onboarding.png');
 
+  /// File path: assets/images/error.png
+  AssetGenImage get error => const AssetGenImage('assets/images/error.png');
+
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
+
+  /// File path: assets/images/soon.png
+  AssetGenImage get soon => const AssetGenImage('assets/images/soon.png');
 
   /// File path: assets/images/start_onboarding.png
   AssetGenImage get startOnboarding =>
@@ -122,7 +164,8 @@ class $AssetsImagesGen {
   String get path => 'assets/images';
 
   /// List of all assets
-  List<AssetGenImage> get values => [endOnboarding, logo, startOnboarding];
+  List<AssetGenImage> get values =>
+      [endOnboarding, error, logo, soon, startOnboarding];
 }
 
 class $AssetsFontsPoppinsGen {

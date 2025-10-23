@@ -43,6 +43,9 @@ final class ColorPaletteDark extends BaseColorPalette {
 
   @override
   ColorScheme get colorScheme => ColorScheme.fromSeed(
-        seedColor: secondary500,
+        seedColor: primary500,
       );
+
+  @override
+  Color get background => gray800;
 }

@@ -73,7 +73,6 @@ class AppTypography {
   TextStyle get lgMedium => const TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.w500,
-        letterSpacing: 0.15,
       );
 
   TextStyle get lgSemiBold => const TextStyle(
@@ -92,7 +91,6 @@ class AppTypography {
   TextStyle get xlMedium => const TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.w500,
-        letterSpacing: 0.15,
       );
 
   TextStyle get xlSemiBold => const TextStyle(
@@ -146,5 +144,27 @@ class AppTypography {
         fontSize: 24,
         fontWeight: FontWeight.w700,
         letterSpacing: 0.15,
+      );
+
+  //* extraxxl = extra extra extra extra large
+  TextStyle get extraxxlRegular => const TextStyle(
+        fontSize: 32,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.15,
+      );
+
+  TextStyle get extraxxlMedium => const TextStyle(
+        fontSize: 32,
+        fontWeight: FontWeight.w500,
+      );
+
+  TextStyle get extraxxlSemiBold => const TextStyle(
+        fontSize: 32,
+        fontWeight: FontWeight.w600,
+      );
+
+  TextStyle get extraxxlBold => const TextStyle(
+        fontSize: 32,
+        fontWeight: FontWeight.w700,
       );
 }

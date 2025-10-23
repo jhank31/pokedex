@@ -78,4 +78,10 @@ abstract class BaseColorPalette {
   Color get textBlackSecondary => const Color(0xFF424242);
 
   Color get textWhite => const Color(0xFFFAFAFA);
+
+  /// Border colors
+  Color get borderColor => const Color(0xFFE0E0E0);
+
+  /// The background color: ideally taken from a single background color
+  Color get background;
 }

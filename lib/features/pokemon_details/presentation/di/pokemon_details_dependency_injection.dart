@@ -1,3 +1,5 @@
+import 'package:pokedex_global/core/errors/errors.dart';
+import 'package:pokedex_global/core/logging/logs/provider/logs_provider.dart';
 import 'package:pokedex_global/core/network/api_client.dart';
 import 'package:pokedex_global/features/pokemon_details/data/datasource/pokemon_details_datasource.dart';
 import 'package:pokedex_global/features/pokemon_details/data/repository/pokemon_details_repository_impl.dart';
@@ -14,6 +16,8 @@ part 'pokemon_details_dependency_injection.g.dart';
 PokemonDetailsRepository pokemonDetailsRepository(Ref ref) =>
     PokemonDetailsRepositoryImpl(
       pokemonDetailsDatasource: ref.watch(pokemonDetailsDatasourceProvider),
+      appTalker: ref.watch(appTalkerProvider('pokemon_details_repository')),
+      errorHandler: ref.watch(errorHandlerProvider),
     );
 
 /// {@template pokemon_details_datasource_provider}

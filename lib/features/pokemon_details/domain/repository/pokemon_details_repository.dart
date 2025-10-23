@@ -4,5 +4,5 @@ import 'package:pokedex_global/features/pokemon_details/domain/entities/entities
 /// A repository that contains the methods to get the pokemon details.
 /// {@endtemplate}
 abstract interface class PokemonDetailsRepository { 
-  Future<PokemonDetailEntity> getPokemonDetail({required String name});
+  Future<PokemonDetailEntity> getPokemonDetail({required String idOrName});
 }

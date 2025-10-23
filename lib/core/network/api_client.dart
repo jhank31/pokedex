@@ -8,5 +8,5 @@ part 'api_client.g.dart';
 /// {@endtemplate}
 @riverpod
   Dio apiClient(Ref ref) {
-  return Dio(BaseOptions(baseUrl:'https://pokeapi.co/api/v2/'));
+  return Dio(BaseOptions(baseUrl:'https://pokeapi.co/api/v2/', ));
 }

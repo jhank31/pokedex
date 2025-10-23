@@ -9,7 +9,8 @@ part 'pokemon_details_provider.g.dart';
 /// Provider for the pokemon details.
 /// {@endtemplate}
 @riverpod
-Future<PokemonDetailEntity> pokemonDetails(Ref ref, String name) async {
+Future<PokemonDetailEntity> pokemonDetails(Ref ref, String idOrName) async {
   final getPokemonDetailUseCase = ref.watch(getPokemonDetailUseCaseProvider);
-  return await getPokemonDetailUseCase.call(GetPokemonDetailParams(name: name));
+  return await getPokemonDetailUseCase
+      .call(GetPokemonDetailParams(idOrName: idOrName));
 }

@@ -145,6 +145,132 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Finish'**
   String get finishButton;
+
+  /// No description provided for @weight.
+  ///
+  /// In en, this message translates to:
+  /// **'Weight'**
+  String get weight;
+
+  /// No description provided for @height.
+  ///
+  /// In en, this message translates to:
+  /// **'Height'**
+  String get height;
+
+  /// No description provided for @ability.
+  ///
+  /// In en, this message translates to:
+  /// **'Ability'**
+  String get ability;
+
+  /// No description provided for @category.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get category;
+
+  /// No description provided for @gender.
+  ///
+  /// In en, this message translates to:
+  /// **'Gender'**
+  String get gender;
+
+  /// No description provided for @unknown.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown'**
+  String get unknown;
+
+  /// No description provided for @weaknesses.
+  ///
+  /// In en, this message translates to:
+  /// **'Weaknesses'**
+  String get weaknesses;
+
+  /// No description provided for @errorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong...'**
+  String get errorTitle;
+
+  /// No description provided for @errorDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'We were unable to load the information at this time. Please check your connection or try again later.'**
+  String get errorDescription;
+
+  /// No description provided for @retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get retry;
+
+  /// No description provided for @noFavorites.
+  ///
+  /// In en, this message translates to:
+  /// **'You haven\'t marked any Pokémon as favorites.'**
+  String get noFavorites;
+
+  /// No description provided for @noFavoritesDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Click on the heart icon of your favorite Pokémon and they will appear here.'**
+  String get noFavoritesDescription;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search for Pokémon...'**
+  String get search;
+
+  /// No description provided for @searchToShowData.
+  ///
+  /// In en, this message translates to:
+  /// **'Search for a Pokémon to see its data'**
+  String get searchToShowData;
+
+  /// No description provided for @home.
+  ///
+  /// In en, this message translates to:
+  /// **'Pokedex'**
+  String get home;
+
+  /// No description provided for @favorites.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorites'**
+  String get favorites;
+
+  /// No description provided for @regions.
+  ///
+  /// In en, this message translates to:
+  /// **'Regions'**
+  String get regions;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+
+  /// No description provided for @availableSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Available soon!'**
+  String get availableSoon;
+
+  /// No description provided for @availableSoonDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'We are working to bring you this section. Come back later to discover all the news.'**
+  String get availableSoonDescription;
+
+  /// No description provided for @changeTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Theme'**
+  String get changeTheme;
 }
 
 class _AppLocalizationsDelegate

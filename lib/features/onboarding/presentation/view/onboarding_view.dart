@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokedex_global/core/const/gap.dart';
 import 'package:pokedex_global/core/const/sizes.dart';
+import 'package:pokedex_global/core/local_db/providers/user_settings_providers.dart';
 import 'package:pokedex_global/core/router/app_router.gr.dart';
 import 'package:pokedex_global/core/theming/core/provider/theming_provider.dart';
 import 'package:pokedex_global/features/onboarding/presentation/view/end_onboarding_view.dart';
@@ -98,8 +99,9 @@ class _OnboardingViewState extends ConsumerState<OnboardingView> {
             Gap.height20,
             GenericButton(
               height: 58,
-              onPressed: () {
+              onPressed: () async {
                 if (isLastPage) {
+                  ref.read(setHasSeenOnboardingProvider(true));
                   context.pushRoute(const HomeRoute());
                 } else {
                   pageController.nextPage(

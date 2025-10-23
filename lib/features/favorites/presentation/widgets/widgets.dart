@@ -1,0 +1,1 @@
+export 'favorites_pokemons_list.dart';

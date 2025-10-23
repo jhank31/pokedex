@@ -15,8 +15,7 @@ class GetPokemonDetailUseCase
 
   @override
   Future<PokemonDetailEntity> call(GetPokemonDetailParams params) async {
-    // Riverpod maneja automáticamente los errores, no necesitamos try-catch aquí
-    return await repository.getPokemonDetail(name: params.name);
+    return await repository.getPokemonDetail(idOrName: params.idOrName);
   }
 }
 
@@ -25,8 +24,8 @@ class GetPokemonDetailUseCase
 /// {@endtemplate}
 class GetPokemonDetailParams {
   /// The name of the pokemon.
-  final String name;
+  final String idOrName;
 
   /// {@macro get_pokemon_detail_params}
-  GetPokemonDetailParams({required this.name});
+  GetPokemonDetailParams({required this.idOrName});
 }

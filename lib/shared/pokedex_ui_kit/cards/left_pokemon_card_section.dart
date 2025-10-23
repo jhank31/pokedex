@@ -16,6 +16,7 @@ class LeftPokemonCardSection extends StatelessWidget {
     super.key,
     required this.pokemon,
     required this.theme,
+    required this.tag,
   });
 
   /// The pokemon detail of the pokemon.
@@ -24,6 +25,9 @@ class LeftPokemonCardSection extends StatelessWidget {
   /// The theme of the app.
   final AppThemes theme;
 
+  /// The tag of the pokemon.
+  final String tag;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -31,15 +35,27 @@ class LeftPokemonCardSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Nº${formatPokemonId(pokemon.id)}',
-              style: theme.baseTheme.typography.smSemiBold.copyWith(
-                color: theme.baseTheme.baseColorPalette.textBlackSecondary,
-              )),
+          Hero(
+            tag: '$tag-id-${pokemon.id}',
+            child: Material(
+              type: MaterialType.transparency,
+              child: Text('Nº${formatPokemonId(pokemon.id)}',
+                  style: theme.baseTheme.typography.smSemiBold.copyWith(
+                    color: theme.baseTheme.baseColorPalette.textBlackSecondary,
+                  )),
+            ),
+          ),
           Gap.height8,
-          Text(capitalizeString(pokemon.name),
-              style: theme.baseTheme.typography.xxlSemiBold.copyWith(
-                color: theme.baseTheme.baseColorPalette.textBlack,
-              )),
+          Hero(
+            tag: '$tag-name-${pokemon.name}-${pokemon.id}',
+            child: Material(
+              type: MaterialType.transparency,
+              child: Text(capitalizeString(pokemon.name),
+                  style: theme.baseTheme.typography.xxlSemiBold.copyWith(
+                    color: theme.baseTheme.baseColorPalette.textBlack,
+                  )),
+            ),
+          ),
           Gap.height12,
           Wrap(
             spacing: Sizes.p4,
@@ -47,7 +63,13 @@ class LeftPokemonCardSection extends StatelessWidget {
             children: pokemon.types
                 .toList()
                 .map(
-                  (type) => ChipPokemonAbility(theme: theme, type: type),
+                  (type) => Hero(
+                      tag:
+                          '$tag-type-${pokemon.id}-${type.name}',
+                      child: Material(
+                        type: MaterialType.transparency,
+                        child: ChipPokemonAbility(theme: theme, type: type),
+                      )),
                 )
                 .toList(),
           ),

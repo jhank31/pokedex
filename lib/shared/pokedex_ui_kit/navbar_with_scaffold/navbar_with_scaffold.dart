@@ -1,9 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokedex_global/core/const/sizes.dart';
 import 'package:pokedex_global/core/router/app_router.gr.dart';
 import 'package:pokedex_global/core/theming/core/provider/theming_provider.dart';
+import 'package:pokedex_global/gen/assets/assets.gen.dart';
+import 'package:pokedex_global/l10n/l10n.dart';
 
 /// {@template navbar_with_scaffold}
 /// A widget that displays a scaffold with a navigation bar and a floating action button.
@@ -25,6 +28,7 @@ class NavBarWithScaffold extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = ref.watch(themingProvider);
+    final l10n = context.l10n;
     return Scaffold(
       body: child,
       bottomNavigationBar: Container(
@@ -49,24 +53,55 @@ class NavBarWithScaffold extends ConsumerWidget {
           ),
           child: NavigationBar(
             selectedIndex: tabsRouter.activeIndex,
-            backgroundColor: theme.baseTheme.baseColorPalette.white,
-            indicatorColor: theme.baseTheme.baseColorPalette.white,
-            
+            backgroundColor: theme.baseTheme.baseColorPalette.background,
+            indicatorColor: theme.baseTheme.isDark
+                ? theme.baseTheme.baseColorPalette.background
+                : theme.baseTheme.baseColorPalette.white,
             destinations: [
               NavigationDestination(
-                  icon: Icon(Icons.home),
-                  selectedIcon: Icon(
-                    Icons.home,
-                    color: theme.baseTheme.baseColorPalette.primary400,
+                  icon: SvgPicture.asset(
+                    Assets.icons.home,
                   ),
-                  label: 'Pokedex'),
+                  selectedIcon: SvgPicture.asset(
+                    Assets.icons.home,
+                    colorFilter: ColorFilter.mode(
+                        theme.baseTheme.baseColorPalette.primary400,
+                        BlendMode.srcIn),
+                  ),
+                  label: l10n.home),
               NavigationDestination(
-                  icon: Icon(Icons.favorite),
-                  selectedIcon: Icon(
-                    Icons.favorite,
-                    color: theme.baseTheme.baseColorPalette.primary400,
+                  icon: SvgPicture.asset(
+                    Assets.icons.region,
                   ),
-                  label: 'Favorites'),
+                  selectedIcon: SvgPicture.asset(
+                    Assets.icons.region,
+                    colorFilter: ColorFilter.mode(
+                        theme.baseTheme.baseColorPalette.primary400,
+                        BlendMode.srcIn),
+                  ),
+                  label: l10n.regions),
+              NavigationDestination(
+                  icon: SvgPicture.asset(
+                    Assets.icons.favorite,
+                  ),
+                  selectedIcon: SvgPicture.asset(
+                    Assets.icons.favorite,
+                    colorFilter: ColorFilter.mode(
+                        theme.baseTheme.baseColorPalette.primary400,
+                        BlendMode.srcIn),
+                  ),
+                  label: l10n.favorites),
+              NavigationDestination(
+                  icon: SvgPicture.asset(
+                    Assets.icons.user,
+                  ),
+                  selectedIcon: SvgPicture.asset(
+                    Assets.icons.user,
+                    colorFilter: ColorFilter.mode(
+                        theme.baseTheme.baseColorPalette.primary400,
+                        BlendMode.srcIn),
+                  ),
+                  label: l10n.profile),
             ],
             onDestinationSelected: (index) {
               tabsRouter.setActiveIndex(index);

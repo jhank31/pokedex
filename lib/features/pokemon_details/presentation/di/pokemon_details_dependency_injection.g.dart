@@ -61,7 +61,7 @@ final class PokemonDetailsRepositoryProvider extends $FunctionalProvider<
 }
 
 String _$pokemonDetailsRepositoryHash() =>
-    r'414d8eb2e35bcf221db8b83c038a7f37583a6765';
+    r'cce9ea5c5bd66794b7e027c6b7a26827a9c3b770';
 
 /// {@template pokemon_details_datasource_provider}
 /// Provider for the pokemon details datasource.

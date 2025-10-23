@@ -1,3 +1,5 @@
+import 'package:pokedex_global/core/errors/errors.dart';
+import 'package:pokedex_global/core/logging/logs/app_talker.dart';
 import 'package:pokedex_global/features/pokemon_details/data/datasource/pokemon_details_datasource.dart';
 import 'package:pokedex_global/features/pokemon_details/domain/entities/pokemon_detail_entity.dart';
 import 'package:pokedex_global/features/pokemon_details/domain/repository/pokemon_details_repository.dart';
@@ -9,18 +11,27 @@ class PokemonDetailsRepositoryImpl implements PokemonDetailsRepository {
   /// The datasource of the pokemon details repository.
   final PokemonDetailsDatasource pokemonDetailsDatasource;
 
-  /// {@macro pokemon_details_repository_impl}
+  /// The app talker.
+  final AppTalker appTalker;
 
-  PokemonDetailsRepositoryImpl({required this.pokemonDetailsDatasource});
+  /// The error handler for managing exceptions.
+  final ErrorHandler errorHandler;
+
+  /// {@macro pokemon_details_repository_impl}
+  PokemonDetailsRepositoryImpl({
+    required this.pokemonDetailsDatasource,
+    required this.appTalker,
+    required this.errorHandler,
+  });
 
   @override
-  Future<PokemonDetailEntity> getPokemonDetail({required String name}) async {
+  Future<PokemonDetailEntity> getPokemonDetail({required String idOrName}) async {
     try {
       final pokemonDetail =
-          await pokemonDetailsDatasource.getPokemonDetail(name: name);
+          await pokemonDetailsDatasource.getPokemonDetail(idOrName: idOrName);
 
       final pokemonSpecies =
-          await pokemonDetailsDatasource.getPokemonSpecies(name: name);
+          await pokemonDetailsDatasource.getPokemonSpecies(name: idOrName);
 
       final weaknesses = <String>{};
       for (final type in pokemonDetail.types) {
@@ -32,16 +43,19 @@ class PokemonDetailsRepositoryImpl implements PokemonDetailsRepository {
         weaknesses.addAll(doubleDamage);
       }
 
-      return PokemonDetailEntity.fromModels(
+      final pokemonDetailEntity = PokemonDetailEntity.fromModels(
         detail: pokemonDetail,
         species: pokemonSpecies,
         weaknesses: weaknesses.toList(),
       );
+      appTalker.info(
+          'Pokemon detail fetched successfully: ${pokemonDetailEntity.name}');
+      return pokemonDetailEntity;
     } catch (e, stackTrace) {
-      // Preservar el error original y el stack trace
-      Error.throwWithStackTrace(
-        Exception('Error fetching pokemon details: ${e.toString()}'),
+      throw errorHandler.handleError(
+        e,
         stackTrace,
+        context: 'Fetching pokemon details for: $idOrName',
       );
     }
   }

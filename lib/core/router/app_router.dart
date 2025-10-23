@@ -18,9 +18,12 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: TalkerRoute.page),
         AutoRoute(page: HostRoute.page, children: [
           AutoRoute(page: HomeRoute.page),
+          AutoRoute(page: RegionsRoute.page),
           AutoRoute(page: FavoritesRoute.page),
+          AutoRoute(page: ProfileRoute.page),
         ]),
         AutoRoute(page: OnboardingRoute.page),
         AutoRoute(page: PokemonDetailsRoute.page),
+        AutoRoute(page: FuzzySearchRoute.page),
       ];
 }

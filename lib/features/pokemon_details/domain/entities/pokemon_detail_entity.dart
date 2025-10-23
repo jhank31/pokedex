@@ -1,3 +1,5 @@
+import 'package:pokedex_global/core/helper/language/local_helper.dart';
+import 'package:pokedex_global/core/helper/strings/text_cleaner_helper.dart';
 import 'package:pokedex_global/features/pokemon_details/domain/enums/enums.dart';
 
 import '../../data/models/pokemon_detail.dart';
@@ -21,6 +23,7 @@ class PokemonDetailEntity {
     required this.maleRate,
     required this.femaleRate,
     required this.weaknesses,
+    required this.category,
   });
 
   /// The id of the pokemon.
@@ -62,20 +65,40 @@ class PokemonDetailEntity {
   /// The weaknesses of the pokemon.
   final List<String> weaknesses;
 
+  /// The category of the pokemon.
+  final String category;
+
   /// Creates an entity from models.
   factory PokemonDetailEntity.fromModels({
     required PokemonDetail detail,
     required Map<String, dynamic> species,
     required List<String> weaknesses,
   }) {
-    final genus = (species['genera'] as List)
-        .firstWhere((g) => g['language']['name'] == 'es')['genus'];
-    final flavor = (species['flavor_text_entries'] as List)
-        .firstWhere((f) => f['language']['name'] == 'es')['flavor_text'];
+    final genus = (species['genera'] as List).firstWhere((g) =>
+        g['language']['name'] ==
+        LocaleHelper.getCurrentLanguageCode())['genus'];
+    final flavor = (species['flavor_text_entries'] as List).firstWhere((f) =>
+        f['language']['name'] ==
+        LocaleHelper.getCurrentLanguageCode())['flavor_text'];
     final color = PokemonColorEnum.fromName(species['color']['name']);
     final genderRate = species['gender_rate'] as int;
-    final femaleRate = genderRate >= 0 ? genderRate * 12.5 : 0.0;
-    final maleRate = 100.0 - femaleRate;
+    final category = (species['genera'] as List).firstWhere((g) =>
+        g['language']['name'] ==
+        LocaleHelper.getCurrentLanguageCode())['genus'];
+    final femaleRate = switch (genderRate) {
+      -1 => -1.0,
+      0 => 0.0,
+      1 => 12.5,
+      2 => 25.0,
+      3 => 37.5,
+      4 => 50.0,
+      5 => 62.5,
+      6 => 75.0,
+      7 => 87.5,
+      8 => 100.0,
+      _ => 0.0,
+    };
+    final maleRate = genderRate == -1 ? -1.0 : (100.0 - femaleRate);
 
     return PokemonDetailEntity(
       id: detail.id,
@@ -93,6 +116,7 @@ class PokemonDetailEntity {
       maleRate: maleRate,
       femaleRate: femaleRate,
       weaknesses: weaknesses,
+      category: TextCleanerHelper.removePokemonWord(category.trim()),
     );
   }
 }

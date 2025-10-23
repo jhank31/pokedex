@@ -2,9 +2,14 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokedex_global/core/const/sizes.dart';
+import 'package:pokedex_global/core/errors/failures/app_failure.dart';
 import 'package:pokedex_global/core/router/app_router.gr.dart';
+import 'package:pokedex_global/features/fuzzy_search/presentation/widgets/widgets.dart';
+import 'package:pokedex_global/features/fuzzy_search/presentation/provider/pokedex_search_provider.dart';
 import 'package:pokedex_global/features/home/presentation/provider/pokedex_provider.dart';
-import 'package:pokedex_global/features/home/presentation/widgets/widgets.dart';
+import 'package:pokedex_global/features/home/presentation/view/home_view_error.dart';
+import 'package:pokedex_global/l10n/l10n.dart';
+import 'package:pokedex_global/shared/pokedex_ui_kit/pokedex_ui_kit.dart';
 
 /// {@template home_view}
 /// A view that displays the home view.
@@ -23,6 +28,9 @@ class _HomeViewState extends ConsumerState<HomeView> {
   @override
   void initState() {
     super.initState();
+    Future.microtask(() {
+      ref.read(pokedexListProvider.notifier).init();
+    });
     _scrollController.addListener(_onScroll);
   }
 
@@ -43,48 +51,78 @@ class _HomeViewState extends ConsumerState<HomeView> {
   @override
   Widget build(BuildContext context) {
     final pokedexList = ref.watch(pokedexListProvider);
-
+    final l10n = context.l10n;
     return pokedexList.when(
       data: (data) => Scaffold(
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(Sizes.p100),
+          child: SafeArea(
+              child: Hero(
+            tag: 'home_hero_search_bar',
+            child: Material(
+              type: MaterialType.transparency,
+              child: GestureDetector(
+                onTap: () => context.pushRoute(const FuzzySearchRoute()),
+                child: SearchPokemon(
+                  enabled: false,
+                  label: l10n.search,
+                  onSearch: (String query) {
+                    return Future.microtask(() {
+                      ref.read(pokedexSearchProvider.notifier).search(query);
+                    });
+                  },
+                ),
+              ),
+            ),
+          )),
+        ),
         body: Padding(
-          padding: const EdgeInsets.only(
-              left: Sizes.p10, right: Sizes.p10, top: Sizes.p24),
+          padding: const EdgeInsets.symmetric(horizontal: Sizes.p10),
           child: RefreshIndicator(
             onRefresh: () =>
                 ref.read(pokedexListProvider.notifier).refreshList(),
-            child: ListView.separated(
-              controller: _scrollController,
-              padding: const EdgeInsets.all(Sizes.p16),
-              itemCount: data.length + 1,
-              separatorBuilder: (_, __) => const SizedBox(height: Sizes.p10),
-              itemBuilder: (context, index) {
-                if (index == data.length) {
-                  // Loader al final
-                  return const Center(
-                    child: Padding(
-                      padding: EdgeInsets.all(Sizes.p16),
-                      child: CircularProgressIndicator(),
-                    ),
-                  );
-                }
+            child: Padding(
+              padding: const EdgeInsets.only(top: Sizes.p12),
+              child: ListView.separated(
+                controller: _scrollController,
+                padding: const EdgeInsets.all(Sizes.p16),
+                itemCount: data.length + 1,
+                separatorBuilder: (_, __) => const SizedBox(height: Sizes.p10),
+                itemBuilder: (context, index) {
+                  if (index == data.length) {
+                    return const Center(
+                      child: Padding(
+                        padding: EdgeInsets.all(Sizes.p16),
+                        child: PokeBallLoader(
+                          size: Sizes.p50,
+                        ),
+                      ),
+                    );
+                  }
 
-                final pokemon = data[index];
-                return GestureDetector(
-                  onTap: () => context.pushRoute(
-                    PokemonDetailsRoute(pokemon: pokemon),
-                  ),
-                  child: PokemonCard(pokemon: pokemon),
-                );
-              },
+                  final pokemon = data[index];
+                  return GestureDetector(
+                    key: Key(pokemon.id.toString()),
+                    onTap: () => context.pushRoute(
+                      PokemonDetailsRoute(
+                          pokemon: pokemon,
+                          tag: 'home_hero_pokemon_card-${pokemon.id}'),
+                    ),
+                    child: PokemonCard(
+                        pokemon: pokemon,
+                        tag: 'home_hero_pokemon_card-${pokemon.id}'),
+                  );
+                },
+              ),
             ),
           ),
         ),
       ),
-      error: (_, __) => const Scaffold(
-        body: Center(child: Text('Error loading Pokémon ⚠️')),
-      ),
+      error: (failure, stackTrace) => HomeViewError(
+          failure: failure as AppFailure,
+          onRetry: () => ref.read(pokedexListProvider.notifier).refreshList()),
       loading: () => const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
+        body: Center(child: PokeBallLoader()),
       ),
     );
   }

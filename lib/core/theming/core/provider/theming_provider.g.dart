@@ -8,27 +8,18 @@ part of 'theming_provider.dart';
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
-/// {@template theme_provider}
-/// Provider for the theme
-/// {@endtemplate}
 
 @ProviderFor(Theming)
 const themingProvider = ThemingProvider._();
 
-/// {@template theme_provider}
-/// Provider for the theme
-/// {@endtemplate}
 final class ThemingProvider extends $NotifierProvider<Theming, AppThemes> {
-  /// {@template theme_provider}
-  /// Provider for the theme
-  /// {@endtemplate}
   const ThemingProvider._()
       : super(
           from: null,
           argument: null,
           retry: null,
           name: r'themingProvider',
-          isAutoDispose: true,
+          isAutoDispose: false,
           dependencies: null,
           $allTransitiveDependencies: null,
         );
@@ -49,11 +40,7 @@ final class ThemingProvider extends $NotifierProvider<Theming, AppThemes> {
   }
 }
 
-String _$themingHash() => r'f682670a70ac45ea2662b642e2fe7d4b0a07c4f7';
-
-/// {@template theme_provider}
-/// Provider for the theme
-/// {@endtemplate}
+String _$themingHash() => r'd60d5721674876de62154078db6640bb23eda7d6';
 
 abstract class _$Theming extends $Notifier<AppThemes> {
   AppThemes build();

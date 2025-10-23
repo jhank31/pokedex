@@ -37,6 +37,7 @@ class ChipPokemonAbility extends StatelessWidget {
         borderRadius: BorderRadius.circular(Sizes.p40),
       ),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Container(
             height: Sizes.p20,

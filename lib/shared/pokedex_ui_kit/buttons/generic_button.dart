@@ -14,6 +14,10 @@ class GenericButton extends ConsumerWidget {
     required this.child,
     this.height = 50,
     this.width = double.infinity,
+    this.padding = const EdgeInsets.symmetric(
+      horizontal: Sizes.p16,
+      vertical: Sizes.p10,
+    ),
   });
 
   /// The callback to be called when the button is pressed.
@@ -28,6 +32,9 @@ class GenericButton extends ConsumerWidget {
   /// width of the button.
   final double width;
 
+  /// padding of the button.
+  final EdgeInsetsGeometry padding;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = ref.watch(themingProvider);
@@ -39,8 +46,7 @@ class GenericButton extends ConsumerWidget {
         width: width,
         child: Container(
             alignment: Alignment.center,
-            padding: const EdgeInsets.symmetric(
-                horizontal: Sizes.p16, vertical: Sizes.p10),
+            padding: padding,
             decoration: BoxDecoration(
               color: theme.baseTheme.primaryButtonColor,
               borderRadius: BorderRadius.circular(Sizes.p100),

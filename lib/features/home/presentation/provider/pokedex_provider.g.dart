@@ -29,7 +29,7 @@ final class PokedexListProvider
           argument: null,
           retry: null,
           name: r'pokedexListProvider',
-          isAutoDispose: true,
+          isAutoDispose: false,
           dependencies: null,
           $allTransitiveDependencies: null,
         );
@@ -42,7 +42,7 @@ final class PokedexListProvider
   PokedexList create() => PokedexList();
 }
 
-String _$pokedexListHash() => r'11ae152cd8b737371c925f3fb888d575b56079d1';
+String _$pokedexListHash() => r'f94fcdd0dff0d79c26666c1a58d0e0bd916dd45f';
 
 /// {@template pokedex_list}
 /// Provider for the pokedex list.

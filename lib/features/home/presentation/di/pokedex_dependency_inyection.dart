@@ -1,3 +1,5 @@
+import 'package:pokedex_global/core/errors/errors.dart';
+import 'package:pokedex_global/core/logging/logs/provider/logs_provider.dart';
 import 'package:pokedex_global/core/network/api_client.dart';
 import 'package:pokedex_global/features/home/data/datasource/pokedex_datasource.dart';
 import 'package:pokedex_global/features/home/data/repository/pokedex_impl.dart';
@@ -15,6 +17,8 @@ part 'pokedex_dependency_inyection.g.dart';
 PokedexRepository pokedexRepository(Ref ref) => PokedexImpl(
       datasource: ref.watch(pokedexDatasourceProvider),
       getPokemonDetailUseCase: ref.watch(getPokemonDetailUseCaseProvider),
+      appTalker: ref.watch(appTalkerProvider('pokedex_repository')),
+      errorHandler: ref.watch(errorHandlerProvider),
     );
 
 /// {@template pokedex_datasource_provider}

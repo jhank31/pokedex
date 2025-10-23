@@ -15,7 +15,9 @@ class HostView extends StatelessWidget {
     return AutoTabsRouter(
       routes: const [
         HomeRoute(),
+        RegionsRoute(),
         FavoritesRoute(),
+        ProfileRoute(),
       ],
       transitionBuilder: (context, child, animation) {
         return FadeTransition(opacity: animation, child: child);

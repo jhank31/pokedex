@@ -6,7 +6,7 @@ import 'package:pokedex_global/features/pokemon_details/data/models/models.dart'
 /// A datasource that contains the methods to get the pokemon details.
 /// {@endtemplate}
 abstract interface class PokemonDetailsDatasource {
-  Future<PokemonDetail> getPokemonDetail({required String name});
+  Future<PokemonDetail> getPokemonDetail({required String idOrName});
   Future<Map<String, dynamic>> getPokemonSpecies({required String name});
   Future<Map<String, dynamic>> getPokemonType({required String typeName});
 }
@@ -22,8 +22,8 @@ class PokemonDetailsDatasourceImpl implements PokemonDetailsDatasource {
   PokemonDetailsDatasourceImpl({required this.dio});
 
   @override
-  Future<PokemonDetail> getPokemonDetail({required String name}) async {
-    final res = await dio.get('${PokemonEndpoints.getPokemonList}/$name');
+  Future<PokemonDetail> getPokemonDetail({required String idOrName}) async {
+    final res = await dio.get('${PokemonEndpoints.getPokemonList}/$idOrName');
     return PokemonDetail.fromJson(res.data as Map<String, dynamic>);
   }
 

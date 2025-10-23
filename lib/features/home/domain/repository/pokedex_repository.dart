@@ -10,4 +10,6 @@ abstract interface class PokedexRepository {
     required int offset,
   });
 
+  /// get the pokemon by id or name
+  Future<PokemonDetailEntity> getPokemon({required String idOrName});
 }

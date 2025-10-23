@@ -40,7 +40,7 @@ abstract class BaseTheme {
   ThemeData get theme;
 
   ThemeData get baseTheme => ThemeData(
-        scaffoldBackgroundColor: baseColorPalette.white,
+        scaffoldBackgroundColor: baseColorPalette.background,
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
             backgroundColor:
@@ -102,12 +102,18 @@ abstract class BaseTheme {
           brightness: brightness,
         ),
         appBarTheme: AppBarTheme(
-          foregroundColor: baseColorPalette.white,
+          elevation: 0,
           centerTitle: true,
-          iconTheme: IconThemeData(
-            color: baseColorPalette.white,
+          titleTextStyle: TextStyle(
+            color: isDark ? baseColorPalette.white : baseColorPalette.black,
+            fontSize: typography.xxlRegular.fontSize,
+            fontWeight: typography.xxlRegular.fontWeight,
+            fontFamily: typography.primaryFontFamily,
           ),
-          backgroundColor: baseColorPalette.primaryColor,
+          iconTheme: IconThemeData(
+            color: isDark ? baseColorPalette.white : baseColorPalette.black,
+          ),
+          backgroundColor: Colors.transparent,
         ),
         bottomSheetTheme: BottomSheetThemeData(
           backgroundColor: baseColorPalette.white,
@@ -131,22 +137,31 @@ abstract class BaseTheme {
           ),
         ),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          backgroundColor: baseColorPalette.primaryColor,
+          backgroundColor: baseColorPalette.background,
           selectedItemColor: baseColorPalette.white,
           unselectedItemColor: baseColorPalette.white.withValues(alpha: 0.5),
         ),
         textTheme: TextTheme(
           bodyLarge: TextStyle(
-            color: baseColorPalette.textBlack,
+            color: isDark
+                ? baseColorPalette.textBlack
+                : baseColorPalette.textWhite,
             fontFamily: typography.primaryFontFamily,
           ),
           bodyMedium: TextStyle(
-            color: baseColorPalette.textBlack,
+            color: isDark
+                ? baseColorPalette.textWhite
+                : baseColorPalette.textBlack,
           ),
           titleLarge: TextStyle(
-            color: baseColorPalette.textBlack,
+            color: isDark
+                ? baseColorPalette.textWhite
+                : baseColorPalette.textBlack,
             fontWeight: FontWeight.bold,
           ),
+        ),
+        iconTheme: IconThemeData(
+          color: isDark ? baseColorPalette.white : baseColorPalette.black,
         ),
         navigationBarTheme: NavigationBarThemeData(
           labelTextStyle: WidgetStateProperty.resolveWith<TextStyle>(
@@ -163,6 +178,7 @@ abstract class BaseTheme {
             },
           ),
         ),
+        
         useMaterial3: true,
         fontFamily: typography.primaryFontFamily,
         brightness: brightness,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokedex_global/core/app_life_cycle_listener/listener/app_life_cycle_listener.dart';
+import 'package:pokedex_global/core/local_db/providers/di/database_providers.dart';
 import 'package:pokedex_global/core/router/app_router.dart';
 import 'package:pokedex_global/core/theming/core/provider/theming_provider.dart';
 import 'package:pokedex_global/l10n/arb/app_localizations.dart';
@@ -17,7 +18,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ProviderScope(child: _RouterWidget(appRouter: _appRouter));
+    return _RouterWidget(appRouter: _appRouter);
   }
 }
 
@@ -35,6 +36,7 @@ class _RouterWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = ref.watch(themingProvider);
+    ref.read(appDatabaseProvider);
     return AppLifeCycleListener(
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
